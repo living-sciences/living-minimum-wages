@@ -1,0 +1,36 @@
+{
+  "claim_id": "C22",
+  "status": "match",
+  "structured": {
+    "file_exists": true,
+    "evidence_found": true,
+    "file_path_checked": [
+      "figures/figures/Figure6.pdf",
+      "figures/dofiles/Figure6.pdf",
+      "logs/figure6_bins.csv",
+      "rport/figure6.R"
+    ],
+    "structural_features_present": [
+      "employment-elasticity bars by $1 wage bin with x-axis ticks at $5/$10/$15/$20/$25/>$30",
+      "negative bars in the $6-$7 bins (bin6=-0.061, bin7=-0.031)",
+      "positive rise in the $8-$9 bins (bin8=+0.059, bin9=+0.058)",
+      "persistent negative bars across upper-tail bins (>$15)",
+      "green 95% CI whiskers on each bin",
+      "dashed purple running-sum (cumulative) line trending increasingly negative in the upper tail (down to ~-0.12)",
+      "final purple 'Total' bar near -0.089",
+      "inset box reporting 'Employment elas. = -0.089 (0.025)'",
+      "horizontal zero reference line"
+    ],
+    "structural_features_missing": [],
+    "structural_match": true
+  },
+  "rationale": "The run executed step 9 (`Rscript rport/figure6.R`, replication_log.json), emitting `figures/figures/Figure6.pdf` (the exact expected file), `logs/figure6_bins.csv`, and stdout `Aggregate employment elasticity w.r.t. MW = -0.089 (0.025), 95% CI [-0.140,-0.039]`. The rendered PDF reproduces every described feature: employment-elasticity bars by $1 wage bin, a drop in the $6-$7 bins, a rise in the $8-$9 bins, persistent negative upper-tail bins, green CI whiskers, a dashed purple running-sum line that trends increasingly negative through the upper tail (bottoming near -0.12), a final purple 'Total' bar, and an inset box 'Employment elas. = -0.089 (0.025)' \u2014 matching the paper's aggregate of -0.089 (s.e. 0.025) byte-for-byte. The bins CSV confirms the concentration: the cumulative running sum is essentially zero at the $15 bin (totest=-0.0002 at bin 15) and the entire aggregate of -0.0895 accrues in bins above $15, exactly the paper's demonstration that the canonical negative elasticity is spuriously loaded onto wage bins where the minimum wage cannot causally bite. The paper's -0.137 is an alternative cumulative estimate quoted in the text (not the figure's headline number, per the claim notes); the figure and this run reproduce the -0.089 aggregate and the upper-tail concentration it is meant to illustrate. fix_severity.json notes the Stata->R/fixest port (major, environment-driven) but no fix touched this figure's estimation path, and the produced -0.089 (0.025) reproduces the paper value exactly.",
+  "evidence_refs": [
+    "output/replication/codebase/figures/figures/Figure6.pdf",
+    "output/replication/logs/figure6_bins.csv",
+    "output/replication/codebase/rport/figure6.R",
+    "output/replication/replication_log.json",
+    "output/assess/fix_severity.json"
+  ],
+  "graded_by": "agent"
+}

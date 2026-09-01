@@ -1,0 +1,52 @@
+Reading main panel ...
+
+=== group overall ===
+NOTE: 17,901 observations removed because of NA values (RHS: 17,901).
+  Db(below_E)=-0.018(0.004)  labordem_E=0.411(0.430)
+  WB_E(tot)=0.068(0.010)  WB_nospill=0.041(0.009)  spillover=0.397(0.119)
+
+=== group HSD ===
+NOTE: 17,901 observations removed because of NA values (RHS: 17,901).
+  Db(below_E)=-0.065(0.010)  labordem_E=0.493(0.289)
+  WB_E(tot)=0.077(0.013)  WB_nospill=0.048(0.009)  spillover=0.370(0.078)
+
+=== group HSL ===
+NOTE: 17,901 observations removed because of NA values (RHS: 17,901).
+  Db(below_E)=-0.032(0.007)  labordem_E=0.595(0.419)
+  WB_E(tot)=0.073(0.013)  WB_nospill=0.043(0.011)  spillover=0.402(0.100)
+
+=== group teen ===
+NOTE: 17,901 observations removed because of NA values (RHS: 17,901).
+  Db(below_E)=-0.114(0.010)  labordem_E=0.366(0.338)
+  WB_E(tot)=0.081(0.015)  WB_nospill=0.053(0.007)  spillover=0.347(0.059)
+
+=== group female ===
+NOTE: 17,901 observations removed because of NA values (RHS: 17,901).
+  Db(below_E)=-0.023(0.005)  labordem_E=0.352(0.380)
+  WB_E(tot)=0.070(0.011)  WB_nospill=0.045(0.010)  spillover=0.359(0.120)
+
+=== group BH ===
+NOTE: 17,784 observations removed because of NA values (RHS: 17,784).
+  Db(below_E)=-0.028(0.008)  labordem_E=-0.086(0.998)
+  WB_E(tot)=0.045(0.012)  WB_nospill=0.037(0.010)  spillover=0.179(0.265)
+
+--- Table 2 (demographic groups) ---
+    group   Delta_b Delta_b_se ownwage_elas ownwage_se
+   <char>    <char>     <char>       <char>     <char>
+1:    HSD -0.065***    (0.010)       0.493*    (0.289)
+2:    HSL -0.032***    (0.007)        0.595    (0.419)
+3:   teen -0.114***    (0.010)        0.366    (0.338)
+4: female -0.023***    (0.005)        0.352    (0.380)
+5:     BH -0.028***    (0.008)       -0.086    (0.998)
+
+--- Table 4 (groups; overall + demographic) ---
+     group   pct_dW pct_dW_se pct_dW_nospill spillover
+    <char>   <char>    <char>         <char>    <char>
+1: overall 0.068***   (0.010)       0.041***  0.397***
+2:     HSD 0.077***   (0.013)       0.048***  0.370***
+3:    teen 0.081***   (0.015)       0.053***  0.347***
+4:     HSL 0.073***   (0.013)       0.043***  0.402***
+5:  female 0.070***   (0.011)       0.045***  0.359***
+6:      BH 0.045***   (0.012)       0.037***     0.179
+
+time 6.7 min

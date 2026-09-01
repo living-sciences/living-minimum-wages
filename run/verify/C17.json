@@ -1,0 +1,32 @@
+{
+  "claim_id": "C17",
+  "status": "match",
+  "structured": {
+    "replicated_value": {
+      "high_prob_bite": -0.094,
+      "middle_prob_bite": -0.02,
+      "low_prob_bite": -0.004,
+      "high_prob_elasticity_CI": [
+        -0.251,
+        0.663
+      ]
+    },
+    "paper_value": {
+      "high_prob_bite": -0.094,
+      "high_prob_elasticity_CI": [
+        -0.251,
+        0.663
+      ],
+      "low_prob_bite": -0.004,
+      "middle_prob_bite": -0.02
+    },
+    "uncertainty": null,
+    "value_found": true
+  },
+  "rationale": "Table2.tex 'Missing jobs below new MW (\u0394 b)' row reads -0.065, -0.032, -0.114, -0.023, -0.028, -0.094, -0.020, -0.004 across columns (1)-(8). Columns 6/7/8 correspond to the high/middle/low predicted-exposure-probability groups, giving \u0394b = -0.094 (high), -0.020 (middle), -0.004 (low) \u2014 matching the paper values (-0.094, -0.020, -0.004) exactly. The high-probability own-wage elasticity ('Emp. elasticity w.r.t. affected wage' row, column 6) is 0.206 with SE 0.233; its 95% CI = 0.206 \u00b1 1.96\u00d70.233 = [-0.251, 0.663], matching the paper's stated CI [-0.251, 0.663] to three decimals. Employment elasticities w.r.t. MW are broadly similar across the three groups (0.052, 0.016, 0.003) and own-wage elasticities (0.206, 0.304, 0.184) are comparable, consistent with the claim. All targeted quantities reproduced exactly.",
+  "evidence_refs": [
+    "/workspace/output/replication/codebase/tables/tables/Table2.tex",
+    "/workspace/output/replication/codebase/dofiles/dofiles/Table2_for_QJE.do"
+  ],
+  "graded_by": "agent"
+}

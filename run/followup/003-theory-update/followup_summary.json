@@ -1,0 +1,50 @@
+{
+  "instruction_summary": "Produce a calibrated 2026 theory update of CDLZ (2019): recalibrate the paper's bunching/labor-demand-elasticity framework on data through 2024, propose the minimal model amendment reconciling the original and $15-era evidence, and validate it.",
+  "completed": true,
+  "steps": [
+    {"description": "Rebuilt the venv (replication venv was gone): pandas/numpy/scipy/pyfixest 0.60/matplotlib/pyarrow", "command": "uv venv /workspace/.venv && uv pip install pandas numpy scipy pyfixest matplotlib pyarrow", "exit_code": 0, "outputs": ["/workspace/.venv"]},
+    {"description": "Read paper model section (II.A conceptual framework, own-wage elasticity, Sec IV / Fig V-B Kaitz slope)", "command": "pdftotext /workspace/inputs/paper.pdf paper.txt", "exit_code": 0, "outputs": ["workspace/paper.txt"]},
+    {"description": "Ran the Kaitz-binned employment-effect joint regression 002 was killed on: 5 bins, full sample 1979-2024 (~3 min, foreground)", "command": "python bite_function.py kaitz 5 1979 2024 all", "exit_code": 0, "outputs": ["results/employment_by_kaitz_all.csv"]},
+    {"description": "3-bin full-sample Kaitz function (more power/bin)", "command": "python bite_function.py kaitz 3 1979 2024 full3", "exit_code": 0, "outputs": ["results/employment_by_kaitz_full3.csv"]},
+    {"description": "5-bin paper-era Kaitz function 1979-2016 for side-by-side calibration", "command": "python bite_function.py kaitz 5 1979 2016 orig", "exit_code": 0, "outputs": ["results/employment_by_kaitz_orig.csv"]},
+    {"description": "Reduced-form slopes (paper Fig V-B object) both eras; calibrate threshold model; validate (paper-era reproduction + W4 episode); write table + figure", "command": "python analyze_theory.py", "exit_code": 0, "outputs": ["results/calibration_table.csv", "results/calibration_numbers.json", "results/fig1_bite_kaitz_threshold.png", "results/fig1_bite_kaitz_threshold.pdf"]},
+    {"description": "Wrote the theory section and reports", "command": "(authored)", "exit_code": 0, "outputs": ["results/theory_update.md", "report.md", "result_card.json"]}
+  ],
+  "key_results": {
+    "updated_model": "e(bite) flat = c0 for bite<=bite*, then e = c0 - s*(bite-bite*): monopsony with a bite-dependent labor-demand elasticity; nests CDLZ at s=0",
+    "bite_threshold_bstar": "0.094 [CALIBRATED], CI ~0.08-0.12",
+    "kaitz_threshold_Kstar": "~0.50 [CALIBRATED], CI ~0.45-0.60",
+    "slope_above_threshold_per_unit_bite": "-1.74 (se 1.02, t=-1.7) [CALIBRATED]",
+    "dE_dKaitz_paper_era_reproduced": "-0.065 (se 0.48) vs published +0.006 (se .048): both flat",
+    "dE_dKaitz_2026": "-0.11 (se 0.31) grouped; -0.97 (se 0.79) window-level",
+    "own_wage_elasticity_low_bite": "+0.49 (paper +0.411)",
+    "own_wage_elasticity_high_bite_W4": "-1.06",
+    "W4_flat_model_miss": "-3.2 sigma (residual -7.5pp)",
+    "W4_threshold_model_miss": "-1.5 sigma (residual -3.6pp)",
+    "weighted_RMSE_reduction_across_cohorts": "36% (0.055 -> 0.035)",
+    "statistical_significance": "none; the flat model is not rejected, only its central prediction at the frontier"
+  },
+  "comparison_to_original": [
+    {"quantity": "net-employment-vs-Kaitz slope (Fig V-B)", "original": "+0.006 (se 0.048)", "followup": "-0.11 (se 0.31) grouped; -0.97 (se 0.79) window", "source_file": "workspace/paper.txt (Sec IV) / results/calibration_numbers.json", "note": "tilts negative in the extended sample but statistically flat; paper-era reproduces (-0.065)"},
+    {"quantity": "net %dEmp", "original": "+0.028", "followup": "-0.011 pooled; -0.040 at 2016-2019 W4", "source_file": "/workspace/eval/verify/verdicts.json (C1); /workspace/eval/followup/001-living-update/results/estimates_by_window.csv", "note": "softened to ~0/negative, concentrated at high-bite frontier cohort"},
+    {"quantity": "own-wage employment elasticity", "original": "+0.411 (se 0.43)", "followup": "+0.49 low-bite -> -1.06 high-bite (W4)", "source_file": "/workspace/eval/verify/verdicts.json (C3); 001 estimates_by_window.csv", "note": "recast as a function of bite eta(b); paper value is the sub-threshold constant"},
+    {"quantity": "Kaitz frontier observed", "original": "0.59", "followup": "0.67", "source_file": "workspace/paper.txt (conclusion); 001 new_events.csv", "note": "the extended data cross the range the paper flagged as an open question"}
+  ],
+  "artifacts": [
+    "/workspace/eval/followup/003-theory-update/results/theory_update.md",
+    "/workspace/eval/followup/003-theory-update/results/calibration_table.csv",
+    "/workspace/eval/followup/003-theory-update/results/fig1_bite_kaitz_threshold.png",
+    "/workspace/eval/followup/003-theory-update/results/fig1_bite_kaitz_threshold.pdf",
+    "/workspace/eval/followup/003-theory-update/results/employment_by_kaitz_all.csv",
+    "/workspace/eval/followup/003-theory-update/results/employment_by_kaitz_full3.csv",
+    "/workspace/eval/followup/003-theory-update/results/employment_by_kaitz_orig.csv",
+    "/workspace/eval/followup/003-theory-update/results/calibration_numbers.json"
+  ],
+  "deviations": [
+    "Threshold parameters are [CALIBRATED] to moments 001/002 already produced, not from a new in-session structural estimation (per brief item 6, which permits this when structural estimation is infeasible in-session).",
+    "No strict temporal hold-out: the high-bite regime is only observed post-2016, so pre-2015 data identify none of the new parameters. Validation is by paper-era reproduction plus post-frontier-episode fit (both options the brief lists).",
+    "The model is indexed by BITE, not Kaitz alone: W4 and W5 have near-identical Kaitz (0.513 vs 0.520) but opposite employment effects driven by bite (0.116 vs 0.094). Kaitz is presented as the correlated structural driver for comparability with the paper's frontier language.",
+    "Nothing is statistically significant (tightest signal t~-1.7); the update is a central-tendency shift, labeled throughout.",
+    "Cross-bin covariance from the joint Kaitz regression was not extracted, so group-level WLS slope SEs treat bins as independent (disjoint events; mild lower bound on SE)."
+  ]
+}

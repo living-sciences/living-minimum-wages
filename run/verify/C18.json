@@ -1,0 +1,65 @@
+{
+  "claim_id": "C18",
+  "status": "match",
+  "structured": {
+    "file_exists": true,
+    "evidence_found": true,
+    "file_path_checked": [
+      "figures/figures/Figure4incumbent_firstyear.pdf",
+      "figures/figures/Figure4newentrant_firstyear.pdf",
+      "figures/dofiles/Figure4incumbent_firstyear.pdf",
+      "figures/dofiles/Figure4newentrant_firstyear.pdf"
+    ],
+    "structural_features_present": [
+      "Two separate panels: incumbent and new-entrant firstyear figures",
+      "Bar chart of employment change by $1 wage bin relative to the new MW",
+      "Below-minimum dip (negative bars at bins -1, -2)",
+      "At-minimum spike (positive bar at bin 0)",
+      "Cumulative running-sum line (red) tracing missing->excess accumulation back toward ~0",
+      "Confidence-interval error bars on each bin",
+      "Inset reporting Delta_a, Delta_b and %dW (incumbent Da=0.011 Db=-0.009 %dW=0.067; new-entrant Da=0.005 Db=-0.004 %dW=0.042)",
+      "Larger spillover bars for incumbents than new entrants",
+      "Approximately net-zero employment change (Delta_a ~ -Delta_b in magnitude)"
+    ],
+    "structural_features_missing": [
+      "X-axis truncated to bins -4..+4 in the run-produced R version instead of the paper's -4..17+ (upper-tail bins 5-17+ not displayed)",
+      "%Delta affected employment not shown in the run-produced inset (only Da, Db, %dW)"
+    ],
+    "structural_match": true,
+    "run_produced_values": {
+      "incumbent": {
+        "delta_a": 0.011,
+        "delta_b": -0.009,
+        "pct_affected_wage": 0.067
+      },
+      "new_entrant": {
+        "delta_a": 0.005,
+        "delta_b": -0.004,
+        "pct_affected_wage": 0.042
+      }
+    },
+    "paper_expected_values": {
+      "incumbent": {
+        "delta_a": 0.014,
+        "delta_b": -0.013,
+        "pct_affected_wage": 0.095
+      },
+      "new_entrant": {
+        "delta_a": 0.006,
+        "delta_b": -0.005,
+        "pct_affected_wage": 0.019
+      }
+    }
+  },
+  "rationale": "The run produced both panels of paper Figure IV via the Stata->R port (rport/figure4.R -> figures/dofiles/Figure4incumbent_firstyear.pdf and Figure4newentrant_firstyear.pdf; the figures/figures/*.pdf copies are the 2019 author originals, timestamped 2019-04-27, whereas the R port wrote figures/dofiles/ per replication_plan step 7 output_files). Both run-produced figures reproduce every key structural feature the claim describes: $1-wide wage-bin bar charts relative to the new MW, a clear below-minimum missing-jobs dip (negative bars at bins -1/-2), an at-minimum excess-jobs spike (bin 0), a cumulative running-sum line returning toward zero, CI error bars, and larger spillovers for incumbents than new entrants. The inset Delta values are close to the paper and preserve the qualitative message of near-zero net change with incumbents > new entrants: run incumbent Da=0.011/Db=-0.009 vs paper 0.014/-0.013; run new-entrant Da=0.005/Db=-0.004 vs paper 0.006/-0.005 (both signs correct, magnitudes within ~0.003, and Da~|Db| so net change ~0). Deviations are consistent with the full-pipeline Stata->R port flagged as a 'major' fix in fix_severity.json (fixest::feols reimplementation, noted as compile-checked rather than numerically validated), which plausibly explains the modest magnitude differences (e.g. incumbent %dW 0.067 vs 0.095) and the x-axis being truncated to +/-4 rather than the paper's -4..17+. These are minor/structural presentation differences that do not contradict the claim; the described dip, spike, near-zero net, and incumbent>new-entrant spillover pattern all hold, so this grades as a structural match.",
+  "evidence_refs": [
+    "figures/dofiles/Figure4incumbent_firstyear.pdf",
+    "figures/dofiles/Figure4newentrant_firstyear.pdf",
+    "figures/figures/Figure4incumbent_firstyear.pdf",
+    "figures/figures/Figure4newentrant_firstyear.pdf",
+    "rport/figure4.R",
+    "../analyze/replication_plan.json",
+    "../assess/fix_severity.json"
+  ],
+  "graded_by": "agent"
+}

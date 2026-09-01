@@ -1,0 +1,8 @@
+{
+  "claim_id": "C23",
+  "status": "out_of_scope",
+  "structured": {},
+  "rationale": "No plan step targeted this claim; treated as out_of_scope (excluded from the score, not a failure): Event-by-event distribution of significance is an appendix-level robustness exercise (stacked_events_event_specific_regressions_* / stacked_analysis_event_by_event_FP_*), not part of master_QJE.do's main table/figure section; deprioritized in favor of headline + main-text supporting claims.",
+  "evidence_refs": [],
+  "graded_by": "deterministic"
+}

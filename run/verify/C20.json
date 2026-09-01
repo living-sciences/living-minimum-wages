@@ -1,0 +1,196 @@
+{
+  "claim_id": "C20",
+  "status": "match",
+  "structured": {
+    "replicated_table": {
+      "columns": [
+        "Overall",
+        "Tradeable",
+        "Nontradeable",
+        "Construction",
+        "Other",
+        "Restaurants",
+        "Retail",
+        "Manufacturing"
+      ],
+      "rows": [
+        {
+          "label": "Missing jobs below new MW (\u0394b)",
+          "values": [
+            -0.019,
+            -0.016,
+            -0.066,
+            -0.003,
+            -0.011,
+            -0.101,
+            -0.033,
+            -0.017
+          ]
+        },
+        {
+          "label": "Excess jobs above new MW (\u0394a)",
+          "values": [
+            0.02,
+            0.011,
+            0.072,
+            0.005,
+            0.011,
+            0.101,
+            0.041,
+            0.011
+          ]
+        },
+        {
+          "label": "%\u0394 affected wages",
+          "values": [
+            0.058,
+            0.058,
+            0.056,
+            0.097,
+            0.056,
+            0.049,
+            0.06,
+            0.073
+          ]
+        },
+        {
+          "label": "%\u0394 affected employment",
+          "values": [
+            0.008,
+            -0.111,
+            0.022,
+            0.051,
+            0.009,
+            -0.001,
+            0.062,
+            -0.101
+          ]
+        },
+        {
+          "label": "Emp. elasticity w.r.t. affected wage",
+          "values": [
+            0.14,
+            -1.91,
+            0.387,
+            0.53,
+            0.166,
+            -0.011,
+            1.04,
+            -1.385
+          ]
+        },
+        {
+          "label": "Jobs below new MW (b\u0304_{-1})",
+          "values": [
+            0.087,
+            0.05,
+            0.27,
+            0.036,
+            0.057,
+            0.434,
+            0.136,
+            0.05
+          ]
+        }
+      ]
+    },
+    "paper_table": {
+      "columns": [
+        "Overall",
+        "Tradeable",
+        "Nontradeable",
+        "Construction",
+        "Other",
+        "Restaurants",
+        "Retail",
+        "Manufacturing"
+      ],
+      "rows": [
+        {
+          "label": "Missing jobs below new MW (\u0394b)",
+          "values": [
+            -0.019,
+            -0.016,
+            -0.066,
+            -0.003,
+            -0.011,
+            -0.101,
+            -0.033,
+            -0.017
+          ]
+        },
+        {
+          "label": "Excess jobs above new MW (\u0394a)",
+          "values": [
+            0.02,
+            0.011,
+            0.072,
+            0.005,
+            0.011,
+            0.101,
+            0.041,
+            0.011
+          ]
+        },
+        {
+          "label": "%\u0394 affected wages",
+          "values": [
+            0.058,
+            0.058,
+            0.056,
+            0.097,
+            0.056,
+            0.049,
+            0.06,
+            0.073
+          ]
+        },
+        {
+          "label": "%\u0394 affected employment",
+          "values": [
+            0.008,
+            -0.111,
+            0.022,
+            0.051,
+            0.009,
+            -0.001,
+            0.062,
+            -0.101
+          ]
+        },
+        {
+          "label": "Emp. elasticity w.r.t. affected wage",
+          "values": [
+            0.14,
+            -1.91,
+            0.387,
+            0.53,
+            0.166,
+            -0.011,
+            1.04,
+            -1.385
+          ]
+        },
+        {
+          "label": "Jobs below new MW (b\u0304_{-1})",
+          "values": [
+            0.087,
+            0.05,
+            0.27,
+            0.036,
+            0.057,
+            0.434,
+            0.136,
+            0.05
+          ]
+        }
+      ]
+    },
+    "value_found": true
+  },
+  "rationale": "The replicated tables/tables/Table3.tex reproduces the by-industry decomposition cell-for-cell against paper_value. Missing jobs (\u0394b) row reads Overall -0.019, Tradable -0.016, Nontradable -0.066, Construction -0.003, Other -0.011, Restaurants -0.101, Retail -0.033, Manufacturing -0.017 \u2014 identical to the paper and confirming the claim's ordering: restaurants have the largest bite (-0.101, highly binding), nontradeable ~-0.066, tradeable/manufacturing -0.016/-0.017, and construction not binding at -0.003. Excess jobs (\u0394a: 0.020, 0.011, 0.072, 0.005, 0.011, 0.101, 0.041, 0.011), %\u0394 affected wages, %\u0394 affected employment (Overall 0.008, Tradable -0.111, Nontradable 0.022, Construction 0.051, Other 0.009, Restaurants -0.001, Retail 0.062, Manufacturing -0.101), emp. elasticity w.r.t. affected wage (0.140, -1.910, 0.387, 0.530, 0.166, -0.011, 1.040, -1.385), and below-share b\u0304_{-1} (0.087, 0.050, 0.270, 0.036, 0.057, 0.434, 0.136, 0.050) all match to the reported precision. The near-zero net employment effect in nontradeable/restaurant/retail vs. negative in tradeable/manufacturing is also confirmed. Every graded cell is within well under 5% relative error (most are exact).",
+  "evidence_refs": [
+    "/workspace/output/replication/codebase/tables/tables/Table3.tex"
+  ],
+  "graded_by": "agent"
+}

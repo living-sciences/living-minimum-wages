@@ -1,0 +1,36 @@
+{
+  "schema": "sai.followup.result_card/v1",
+  "headline": "The 2026 data outgrow CDLZ's flat model at the frontier: the minimal revision is a bunching model whose labor-demand elasticity DECLINES with bite past a threshold near Kaitz ~0.50 / bite ~0.094 - mild-monopsony-positive below, competitive-negative above - which reproduces the paper era and resolves the 2016-2019 episode the flat model misses by 3.2 sigma (though no cohort's job loss is yet statistically significant).",
+  "status": "completed",
+  "metrics": [
+    {"label": "Net-employment-vs-Kaitz slope dE/dKaitz (paper's Fig V-B object)", "value": "-0.11 (se 0.31) grouped / -0.97 (se 0.79) window", "baseline": "+0.006 (se 0.048)", "baseline_label": "CDLZ 2019 Sec IV / Fig V-B (paper.txt)", "note": "tilts negative on the extended sample; paper-era reproduces flat (-0.065)"},
+    {"label": "Calibrated bite threshold b* (where net employment turns negative)", "value": "0.094 (CI ~0.08-0.12)", "baseline": "none (flat to Kaitz 0.59)", "baseline_label": "CDLZ 2019 (open question above 0.59)", "note": "[CALIBRATED]; Kaitz-index equivalent K* ~ 0.50 (CI 0.45-0.60)"},
+    {"label": "Own-wage employment elasticity, now a function of bite", "value": "+0.49 low-bite -> -1.06 high-bite (W4)", "baseline": "+0.411 (single value)", "baseline_label": "verdicts.json C3 / CDLZ 2019", "note": "paper's +0.411 is the sub-threshold constant"},
+    {"label": "2016-2019 ($15 ramp) cohort fit: residual vs flat model", "value": "threshold model -1.5 sigma", "baseline": "flat model -3.2 sigma", "baseline_label": "CDLZ flat prediction +2.8% vs observed -4.0%", "note": "weighted RMSE across 5 cohorts falls 36% (0.055->0.035)"},
+    {"label": "Observed Kaitz frontier", "value": "0.67", "baseline": "0.59", "baseline_label": "CDLZ 2019 max (paper.txt)", "note": "extended data cross the range the paper flagged as untested"}
+  ],
+  "tables": [
+    {"title": "Two models across the five calendar cohorts (net %dEmp; QCEW-benchmarked bunching event study)",
+     "columns": ["Cohort", "bite", "Observed (se)", "CDLZ flat", "Updated threshold"],
+     "rows": [
+       ["W1 1979-1994", "0.082", "-1.1% (6.9)", "+3.5%", "+3.5%"],
+       ["W2 1995-2007", "0.084", "+4.6% (3.3)", "+3.5%", "+3.5%"],
+       ["W3 2008-2015", "0.084", "-2.2% (4.1)", "+3.5%", "+3.5%"],
+       ["W4 2016-2019", "0.116", "-4.0% (2.4)", "+3.5%", "-0.4%"],
+       ["W5 2020-2024", "0.094", "+0.7% (3.5)", "+3.5%", "+3.4%"]
+     ],
+     "highlight_row": 3}
+  ],
+  "figures": [
+    {"file": "results/fig1_bite_kaitz_threshold.png",
+     "caption": "A: recalibrated employment-effect-by-Kaitz function, paper-era events (blue) vs all events through 2024 (orange), with the CDLZ flat model and the updated monopsony-exhaustion threshold (K*~0.50) plus a +-1 slope-SE fan. B: cohort-level employment-by-bite view - W4/W5 share Kaitz but differ in bite, and the bite threshold (0.094) reconciles the 2016-2019 miss the flat model makes by ~2.8-3.2 sigma.",
+     "alt": "Two panels. Left: net employment percent vs Kaitz index with noisy binned point estimates straddling zero, a flat dashed reference line near +3%, and a solid threshold curve flat until Kaitz 0.49 then declining inside a wide shaded uncertainty fan. Right: five labeled cohort points vs bite; W4 2016-2019 sits at -4% far below the flat +2.8% line while the threshold model bends down past bite 0.094 to meet it."}
+  ],
+  "notes": [
+    "Nothing is statistically significant: the flat model is not rejected, only its central prediction at the post-frontier cohort (W4, t=-1.7). The update is an honest central-tendency shift.",
+    "Threshold parameters are [CALIBRATED] to moments 001/002 already produced (window bite-slope zero-crossing/slope), not from a new in-session structural estimation (permitted by brief item 6). Slope SE is large (t=-1.7): threshold LOCATION is better identified than its magnitude.",
+    "Bite - not Kaitz alone - is the operative state variable: W4 and W5 have near-identical Kaitz (0.513 vs 0.520) but opposite effects driven by bite (0.116 vs 0.094).",
+    "Compute this session: three Kaitz-binned joint TWFE regressions (the step follow-up 002 was killed on), reusing 001's validated panel/machinery; no microdata re-fetched. Read results/theory_update.md for the full 'Theory, updated to 2026' section."
+  ],
+  "report_file": "report.md"
+}

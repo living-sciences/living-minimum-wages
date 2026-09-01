@@ -1,0 +1,16 @@
+{
+  "claim_id": "C3",
+  "status": "match",
+  "structured": {
+    "replicated_value": 0.411,
+    "paper_value": 0.411,
+    "uncertainty": 0.43,
+    "value_found": true
+  },
+  "rationale": "In tables/tables/Table1.tex the 'Emp. elasticity w.r.t. affected wage' row, column (1), reports 0.411 with a clustered standard error of (0.430) on the following line \u2014 matching the paper's 0.411 (std. err. 0.430) exactly (well within +/-1 sigma). The implied 95% CI lower bound is 0.411 - 1.96*0.430 = -0.432, so the estimate rules out own-wage elasticities more negative than roughly -0.43 to -0.45, consistent with the paper's stated -0.450 bound. The fix_severity.json notes the estimation pipeline was ported from Stata (reghdfe) to R (fixest::feols) as a documented, faithful correspondence and rated 'major' only due to porting effort, not methodological change; the reproduced headline value matches to the reported precision, indicating the port faithfully reproduced this estimate.",
+  "evidence_refs": [
+    "replication/codebase/tables/tables/Table1.tex",
+    "assess/fix_severity.json"
+  ],
+  "graded_by": "agent"
+}

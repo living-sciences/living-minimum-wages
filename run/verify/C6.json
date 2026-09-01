@@ -1,0 +1,16 @@
+{
+  "claim_id": "C6",
+  "status": "match",
+  "structured": {
+    "replicated_value": 0.024,
+    "paper_value": 0.024,
+    "uncertainty": 0.025,
+    "value_found": true
+  },
+  "rationale": "Table1.tex row 'Employment elasticity w.r.t. MW', column (1) reports exactly 0.024 with clustered std. err. (0.025) (tables/tables/Table1.tex lines 13-14). This is byte-for-byte identical to the paper value of 0.024 (std. err. 0.025), well within \u00b11\u03c3. The supporting rows confirm the construction: the elasticity is (\u0394a + \u0394b)/%\u0394MW = (0.021 - 0.018)/0.101 \u2248 0.024 (lines 3,5,19), and %\u0394MW \u2248 0.101 matches the stated ~10.1%. The implied t-statistic (0.024/0.025 \u2248 0.96) confirms statistical insignificance, and the estimate is far from Meer and West's -0.074, consistent with ruling out substantial aggregate employment reductions. fix_severity.json notes the estimation was ported from Stata to R/fixest (major, environment-driven) but the exact reproduction of the point estimate and SE indicates the port faithfully replicated the fixed-effects absorption, weighting, and clustering.",
+  "evidence_refs": [
+    "replication/codebase/tables/tables/Table1.tex",
+    "assess/fix_severity.json"
+  ],
+  "graded_by": "agent"
+}

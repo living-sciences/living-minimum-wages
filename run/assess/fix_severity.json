@@ -1,0 +1,27 @@
+{
+  "fixes": [
+    {
+      "fix_description": "Stata unavailable (commercial/license-gated); ported the entire estimation pipeline (reghdfe with absorbed fixed effects, weights, clustered SEs) to R/fixest::feols and reimplemented custom .do programs as R functions.",
+      "severity": "major",
+      "rationale": "This is an environment-availability problem, not a flaw in the paper's methodology: the stated estimators (high-dimensional fixed-effects regression, analytic weights, state-clustered SEs) map cleanly onto well-established R equivalents (reghdfe -> fixest::feols is a documented correspondence). It is rated major rather than minor because porting a full analysis language requires understanding the code, faithfully translating custom .do programs, and re-verifying that fixed-effect absorption, weighting, and clustering match; it is not a one-minute mechanical change. It is not critical because the methodology can still be implemented as described and the results remain achievable. The caveat 'compile = load without error' for the custom programs is a soft spot: it signals the reimplementation was checked for loading rather than numerically validated against Stata output, leaving some risk of subtle divergence.",
+      "reproducibility_impact": "Reflects a common economics-toolchain barrier rather than a methodological defect: Stata is proprietary and cannot be installed without a license, so the repo is not runnable end-to-end on a clean/open system. The paper's approach is sound and portable, but full reproduction depends on either a Stata license or a trusted language port, and the port itself introduces a small unverified-numerics risk."
+    },
+    {
+      "fix_description": "Fixed a data.table `:=` name collision in figure2.R where the RHS local 'est' resolved to an all-NA column, causing every bin estimate to be NA; switched to set() with distinct local names (bhat/bse).",
+      "severity": "major",
+      "rationale": "This is a genuine code bug in the shipped figure script, not routine maintenance: as written, the plotting code produces all-NA estimates and cannot render the figure ('need finite ylim'). Diagnosing that the RHS symbol was being masked by the column of the same name requires understanding data.table's scoping semantics and the surrounding logic, which places it above minor. It is localized to one figure script and does not implicate the underlying estimation, so it is not critical.",
+      "reproducibility_impact": "Indicates the published figure code was not run in exactly this form (or was run under a data.table version with different scoping behavior), i.e. the repo has a latent, version-sensitive bug that breaks a headline figure out of the box. Suggests incomplete release testing rather than a problem with the paper's actual results."
+    },
+    {
+      "fix_description": "Removed references to DMW_real/MW_real columns absent from the selected matched-panel data in figure4.R (dropped mwc/smw real-minimum-wage lines), keeping the reported Delta_a/Delta_b/%dEmp/%dWage computed from mt_overallcountpcall.",
+      "severity": "major",
+      "rationale": "As shipped the code would evaluate a NULL column inside wmean and error, so the script is non-functional as delivered. The fix requires judgment about which quantities are actually reported, so it is above minor. It is rated major but on the lower end: the removed lines feed a real-minimum-wage adjustment that the agent determined is not part of the reported outputs, so the mismatch is between the code and the upstream column selection rather than in the reported results themselves. It is not critical because the reported figure quantities are still fully computable.",
+      "reproducibility_impact": "Points to a code/data mismatch: the figure script references columns the upstream matched-panel selection never produces, implying the released pipeline and the released plotting code are out of sync. The reported values survive, but it carries a residual risk that the agent's 'not needed' judgment silently dropped an intended part of the analysis; a reviewer would want to confirm those columns are truly irrelevant to the published numbers."
+    }
+  ],
+  "summary": "Three fixes, none minor and none outright critical \u2014 a moderate but non-trivial fix burden concentrated in tooling and release hygiene rather than in the paper's science. The dominant item (Fix 1) is an environment barrier: the analysis is written in proprietary Stata, so the repo cannot run on an open system without a license, forcing a full port to R/fixest. That port is faithful in principle (reghdfe->feols is a standard correspondence) but was only load-checked, not numerically validated against Stata, so a small divergence risk remains. The other two fixes (Fixes 2 and 3) are real bugs in the shipped figure scripts \u2014 an all-NA data.table name collision and a reference to columns absent from the produced data \u2014 both of which would prevent the figures from rendering as delivered. Together they suggest the code was released without a clean end-to-end run on a fresh environment, and that some plotting code drifted out of sync with the data pipeline. None of these undermine the paper's underlying methodology or claimed results, but they do mean the repository is not turn-key reproducible: it requires a Stata license (or a trusted port) plus targeted debugging of the figure scripts.",
+  "total_fixes": 3,
+  "minor_count": 0,
+  "major_count": 3,
+  "critical_count": 0
+}

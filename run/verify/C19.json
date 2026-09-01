@@ -1,0 +1,23 @@
+{
+  "claim_id": "C19",
+  "status": "match",
+  "structured": {
+    "replicated_value": {
+      "manufacturing": -1.385,
+      "nontradeable": 0.387,
+      "tradeable": -1.91
+    },
+    "paper_value": {
+      "manufacturing": -1.385,
+      "nontradeable": 0.387,
+      "tradeable": -1.91
+    },
+    "uncertainty": null,
+    "value_found": true
+  },
+  "rationale": "In tables/tables/Table3.tex, the 'Emp. elasticity w.r.t. affected wage' row reports: Tradable (col 2) -1.910 (s.e. 3.922), Nontradable (col 3) 0.387 (s.e. 0.597), and Manufacturing (col 8) -1.385 (s.e. 2.956). These reproduce the paper values exactly: tradeable -1.910, manufacturing -1.385, nontradeable 0.387 with std. err. 0.597. The tradeable and manufacturing estimates are large and negative but statistically insignificant (s.e. 3.922 and 2.956, larger than the point estimates), and the nontradeable estimate is positive and insignificant (0.387/0.597), consistent with the claim. All three values are exact matches (0% relative error).",
+  "evidence_refs": [
+    "replication/codebase/tables/tables/Table3.tex"
+  ],
+  "graded_by": "agent"
+}

@@ -1,0 +1,25 @@
+{
+  "paper": "Cengiz, Dube, Lindner, Zipperer (2019), 'The Effect of Minimum Wages on Low-Wage Jobs', QJE 134(3).",
+  "environment": {
+    "original_toolchain": "Stata (reghdfe/estout/ftools/gtools/moremata) — proprietary, license-gated",
+    "stata_available": false,
+    "stata_note": "Stata is commercial software requiring a paid license; no binary/license present and it cannot be installed without one. Ported the analysis faithfully to R.",
+    "port_language": "R 4.6.1",
+    "key_r_packages": {"fixest": "0.14.2 (reghdfe equivalent, HDFE + cluster-robust VCE)",
+                       "haven": "reads .dta", "data.table": "panel manipulation",
+                       "numDeriv": "delta-method SEs for nlcom", "estimatr/sandwich/lmtest": "available"},
+    "python_version": "3.12.8 (pyreadstat for .dta schema inspection)",
+    "gpu_available": true,
+    "gpu_model": "4x NVIDIA RTX A6000 (not needed; econometrics is CPU-bound)",
+    "ram_gb": 503, "cpus": 32
+  },
+  "port_methodology": {
+    "reghdfe_to_fixest": "absorb(i.wagebinstate i.wagequarterdate ...) -> fixest FE part; varying slopes i.fe##c.x -> fe[x]; interaction i.a##i.b -> a^b; bare categorical controls (postcont*, controlf) -> factor() FE; i.one#c.var linear controls (window, before/after treats) -> ordinary RHS regressors (FWL-equivalent for the reported treat coefficients).",
+    "lincom": "linear combo w'beta with clustered VCE: se=sqrt(w'Vw).",
+    "nlcom": "delta method with numerical gradient (numDeriv::grad).",
+    "clustering": "cluster(statenum), 51 states, dof=G-1=50.",
+    "weights": "Stata aweight -> fixest weights (scale-invariant for point est & clustered VCE).",
+    "treatment_design": "All treat_*/window_*/control_* dummies were pre-computed columns in state_panels_with3quant1979.dta (treatmentdefinition primary branch only loads data), so no reconstruction needed.",
+    "scalars": "E (affected E/pop), B (below share b-bar), EWB (below wage-bill share), wagemult, mwpc reproduced from weighted subsample means with Stata missing-value comparison semantics (missing behaves as +Inf)."
+  }
+}

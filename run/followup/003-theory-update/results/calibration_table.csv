@@ -1,0 +1,10 @@
+parameter,paper_era_value,value_2026,source_paper_era,moment_source_2026,label
+Net employment / Kaitz slope (dE/dKaitz),+0.006,-0.11 to -0.97,"CDLZ 2019 Sec IV (Fig V-B), published",5-Kaitz-grp -0.11 (se .31); window-level -0.97 (se .79); 1979-2024,[ESTIMATED]
+Net affected employment %dEmp (pooled),+0.028,-0.011,verdicts.json C1 / paper Table I,001 pooled 1979-2024 (se .012),[ESTIMATED]
+%dEmp at highest-bite cohort (2016-2019),+0.028 (flat model),-0.040,paper: no bite/Kaitz gradient,"001 W4 window (se .024), bite 0.116",[ESTIMATED]
+Own-wage employment elasticity (below thr.),+0.411,+0.49,verdicts.json C3 / paper,001 anchor reproduction (se .44),[ESTIMATED]
+Own-wage employment elasticity (above thr.),n/a (single value),-1.06,paper reports one pooled +0.411,001 W4 2016-2019 (se .77),[ESTIMATED]
+Bite threshold b* (missing-jobs share),none (flat),0.094,paper: flat to Kaitz 0.59,zero-crossing of window bite-slope; wide CI 0.08-0.12,[CALIBRATED]
+Kaitz threshold K* (min/median),none (>0.59 untested),0.50,paper: open question above 0.59,zero-crossing of window Kaitz-slope; wide CI 0.45-0.60,[CALIBRATED]
+Slope of %dEmp above threshold (per unit bite),0,-1.74,paper: 0,"window-level bite slope (se 1.02, t=-1.7)",[CALIBRATED]
+Observed Kaitz frontier,0.59,0.67,paper max,001 new events reach 0.666,[ESTIMATED]

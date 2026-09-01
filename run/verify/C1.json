@@ -1,0 +1,16 @@
+{
+  "claim_id": "C1",
+  "status": "match",
+  "structured": {
+    "replicated_value": 0.028,
+    "paper_value": 0.028,
+    "uncertainty": 0.029,
+    "value_found": true
+  },
+  "rationale": "In the produced output tables/tables/Table1.tex, the '\\%$\\Delta$ affected employment' row, column (1) (baseline: Bin-state FE only) reports a point estimate of 0.028 with a clustered standard error of (0.029) on the line directly below. This is byte-for-byte identical to the paper value of 0.028 (std. err. 0.029) and is statistically insignificant (positive, t = 0.028/0.029 < 1). The supporting components in the same column are consistent with the claim's notes: Missing jobs below new MW (\u0394b) = -0.018 (0.004), Excess jobs above new MW (\u0394a) = 0.021 (0.003), and Jobs below new MW (b\u0304_{-1}) = 0.086, so (\u0394a + \u0394b)/b\u0304_{-1} = (0.021 - 0.018)/0.086 \u2248 0.035, and the reported 0.028 reflects the paper's weighted computation. The replicated value equals the paper value exactly (0 relative error, well within \u00b11\u03c3), so this is a match. fix_severity.json notes the estimation pipeline was ported Stata->R/fixest (major, environment-driven) but load-checked only; nonetheless the produced headline number reproduces the paper exactly.",
+  "evidence_refs": [
+    "replication/codebase/tables/tables/Table1.tex",
+    "assess/fix_severity.json"
+  ],
+  "graded_by": "agent"
+}

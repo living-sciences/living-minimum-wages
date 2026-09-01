@@ -1,0 +1,36 @@
+denominator (mean epop) = 0.56278
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+NOTE: 255 observations removed because of NA values (RHS: 255).
+
+AGGREGATE employment elasticity w.r.t. MW = -0.089 (0.025)  [95% CI -0.140, -0.039]
+Wrote /workspace/output/replication/codebase/figures/dofiles/Figure6.pdf and FigureA11.pdf
+time 5.2s

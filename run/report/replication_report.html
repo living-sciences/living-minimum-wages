@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Replication Report</title>
+<style>
+  :root {
+    --match: #1a7f37; --partial: #9a6700; --nomatch: #cf222e;
+    --na: #57606a; --bg: #f6f8fa; --card: #ffffff; --ink: #1f2328;
+    --muted: #57606a; --line: #d0d7de; --accent: #0969da;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink); background: var(--bg); margin: 0; line-height: 1.55;
+    font-size: 15px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 28px 22px 60px; }
+  h1 { font-size: 22px; margin: 0 0 2px; }
+  h2 { font-size: 17px; margin: 28px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+  h3 { font-size: 14px; margin: 16px 0 4px; color: var(--ink); }
+  p { margin: 6px 0; }
+  .sub { color: var(--muted); font-size: 13px; }
+  a { color: var(--accent); text-decoration: none; }
+  code { background: var(--bg); border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; font-size: 12.5px; }
+
+  /* Verdict card */
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; margin-top: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  .hero { display: flex; gap: 22px; align-items: center; }
+  .gauge { flex: 0 0 auto; }
+  .hero-body { flex: 1 1 auto; }
+  .badge { display: inline-block; font-weight: 600; font-size: 12px; letter-spacing: .02em; padding: 3px 10px; border-radius: 999px; color: #fff; }
+  .bottomline { font-size: 16px; font-weight: 500; margin: 8px 0 10px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--muted); font-size: 13px; }
+  .stats b { color: var(--ink); }
+
+  /* Tier bar */
+  .bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); margin: 4px 0 2px; }
+  .bar > span { display: block; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+
+  /* Claim chips */
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+  .chip { font-size: 12px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: #fff; font-weight: 500; }
+
+  /* Tables */
+  table { border-collapse: collapse; width: 100%; font-size: 13px; margin: 8px 0; }
+  th, td { text-align: left; padding: 7px 9px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .st { font-weight: 600; }
+
+  details { margin: 8px 0; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+  details > summary { cursor: pointer; padding: 9px 12px; font-weight: 600; font-size: 13.5px; }
+  details[open] > summary { border-bottom: 1px solid var(--line); }
+  details .inner { padding: 4px 14px 12px; }
+  .refs { font-size: 12.5px; color: var(--muted); }
+  .refs code { font-size: 12px; }
+  footer { margin-top: 34px; color: var(--muted); font-size: 12px; text-align: center; }
+  @media print { body { background: #fff; } .card { box-shadow: none; } details { border: none; } details > summary { display: none; } details .inner { padding: 0; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Replication Report</h1>
+  <div class="sub">Mode: full · Generated 2026-08-23 23:15</div>
+
+  <!-- VERDICT CARD -->
+  <div class="card">
+    <div class="hero">
+      <div class="gauge">
+        <svg width="104" height="104" viewBox="0 0 104 104" role="img" aria-label="Replication score 98%">
+          <circle cx="52" cy="52" r="46" fill="none" stroke="#eaeef2" stroke-width="10"/>
+          
+          <circle cx="52" cy="52" r="46" fill="none" stroke="#1a7f37" stroke-width="10"
+                  stroke-linecap="round" stroke-dasharray="283.2 289.0"
+                  transform="rotate(-90 52 52)"/>
+          <text x="52" y="50" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2328">98%</text>
+          <text x="52" y="68" text-anchor="middle" font-size="10" fill="#57606a">score</text>
+          
+        </svg>
+      </div>
+      <div class="hero-body">
+        <span class="badge" style="background: #1a7f37">Reproduced</span>
+        
+        <div class="stats">
+          <span><b>21/22</b> claims reproduced</span>
+          <span><b>1</b> partial</span>
+          
+          
+          <span><b>3</b> fixes applied</span>
+          
+        </div>
+      </div>
+    </div>
+
+    
+    <h3 style="margin-top:16px">Claims at a glance</h3>
+    <div class="bar" aria-hidden="true">
+      <span style="width: 87.5%; background: var(--match)"></span>
+      <span style="width: 4.17%; background: var(--partial)"></span>
+      
+      
+    </div>
+    <div class="legend">
+      <span><i style="background: var(--match)"></i>match 21</span>
+      <span><i style="background: var(--partial)"></i>partial 1</span>
+      <span><i style="background: var(--nomatch)"></i>no match 0</span>
+      <span><i style="background: var(--na)"></i>other 0</span>
+    </div>
+    
+    <div class="chips">
+      <span class="chip" style="background: #1a7f37" title="scalar · match">C1</span><span class="chip" style="background: #1a7f37" title="scalar · match">C2</span><span class="chip" style="background: #1a7f37" title="scalar · match">C3</span><span class="chip" style="background: #1a7f37" title="scalar · match">C4</span><span class="chip" style="background: #1a7f37" title="scalar · match">C5</span><span class="chip" style="background: #1a7f37" title="scalar · match">C6</span><span class="chip" style="background: #1a7f37" title="scalar · match">C7</span><span class="chip" style="background: #1a7f37" title="figure · match">C8</span><span class="chip" style="background: #1a7f37" title="table · match">C9</span><span class="chip" style="background: #1a7f37" title="figure · match">C10</span><span class="chip" style="background: #8250df" title="scalar_range · out_of_scope">C11</span><span class="chip" style="background: #1a7f37" title="scalar · match">C12</span><span class="chip" style="background: #1a7f37" title="scalar · match">C13</span><span class="chip" style="background: #9a6700" title="table · partial">C14</span><span class="chip" style="background: #1a7f37" title="scalar · match">C15</span><span class="chip" style="background: #1a7f37" title="table · match">C16</span><span class="chip" style="background: #1a7f37" title="scalar · match">C17</span><span class="chip" style="background: #1a7f37" title="figure · match">C18</span><span class="chip" style="background: #1a7f37" title="scalar · match">C19</span><span class="chip" style="background: #1a7f37" title="table · match">C20</span><span class="chip" style="background: #1a7f37" title="figure · match">C21</span><span class="chip" style="background: #1a7f37" title="figure · match">C22</span><span class="chip" style="background: #8250df" title="scalar · out_of_scope">C23</span><span class="chip" style="background: #1a7f37" title="qualitative · match">C24</span>
+    </div>
+    
+    
+  </div>
+
+  
+  <div class="card" style="border-color: #d4a72c; background: #fff8c5">
+    <b>Flags</b>
+    <ul style="margin:6px 0 0"><li>2 claim(s) marked out_of_scope (planner did not target them) — excluded from the score, not counted as failures. Score is over the 22 attempted/blocked claim(s).</li></ul>
+  </div>
+  
+
+  <!-- NARRATIVE (summary-first) -->
+  
+
+  <!-- LIMITATIONS -->
+  
+  <h2>Limitations &amp; code quality</h2>
+  
+  
+  <p class="sub">3 fixes were needed to run the provided code (0 minor, 3 major, 0 critical). These describe the code, not the replication.</p>
+  <table>
+    <thead><tr><th>#</th><th>Fix</th><th>Severity</th></tr></thead>
+    <tbody><tr><td>1</td><td>Stata unavailable (commercial/license-gated); ported the entire estimation pipeline (reghdfe with absorbed fixed effects, weights, clustered SEs) to R/fixest::feols and reimplemented custom .do programs as R functions.</td><td class="st" style="color: #9a6700">major</td></tr><tr><td>2</td><td>Fixed a data.table `:=` name collision in figure2.R where the RHS local &#39;est&#39; resolved to an all-NA column, causing every bin estimate to be NA; switched to set() with distinct local names (bhat/bse).</td><td class="st" style="color: #9a6700">major</td></tr><tr><td>3</td><td>Removed references to DMW_real/MW_real columns absent from the selected matched-panel data in figure4.R (dropped mwc/smw real-minimum-wage lines), keeping the reported Delta_a/Delta_b/%dEmp/%dWage computed from mt_overallcountpcall.</td><td class="st" style="color: #9a6700">major</td></tr></tbody>
+  </table>
+  
+  
+
+  <!-- CITATION CHECK (advisory; a plain section so it also lands in the PDF) -->
+  
+
+  <!-- DETAILS (collapsible) -->
+  <h2>Details</h2>
+
+  <details>
+    <summary>Per-claim verdicts (24)</summary>
+    <div class="inner">
+      <table>
+        <thead><tr><th>ID</th><th>Tier</th><th>Type</th><th>Status</th><th>How graded</th><th>Why</th></tr></thead>
+        <tbody>
+        
+          <tr>
+            <td><code>C1</code></td><td>headline</td><td>scalar</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>In the produced output tables/tables/Table1.tex, the &#39;\%$\Delta$ affected employment&#39; row, column (1) (baseline: Bin-state FE only) reports a point estimate of 0.028 with a clustered standard error of (0.029) on the line directly below. ...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C2</code></td><td>headline</td><td>scalar</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>The expected output file tables/tables/Table1.tex contains the &#39;\%$\Delta$ affected wages&#39; row with column (1) value 0.068*** and a clustered standard error of (0.010) directly below it. This matches the paper value of 0.068 exactly, wit...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C3</code></td><td>headline</td><td>scalar</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>In tables/tables/Table1.tex the &#39;Emp. elasticity w.r.t. affected wage&#39; row, column (1), reports 0.411 with a clustered standard error of (0.430) on the following line — matching the paper&#39;s 0.411 (std. err. 0.430) exactly (well within +/...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C4</code></td><td>supporting</td><td>scalar</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>Table1.tex column (1), row &#39;Missing jobs below new MW ($ \Delta $ b)&#39; reports -0.018*** with clustered std. err. (0.004) on the line below it. This exactly matches the paper value of -0.018 (fraction of pretreatment total employment) wit...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C5</code></td><td>supporting</td><td>scalar</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>Table1.tex line 5 (&#39;Excess jobs above new MW ($ \Delta $ a)&#39;), column (1), reads 0.021*** with the clustered standard error 0.003 on the following line (line 6, &#39;(0.003)&#39;). This exactly matches the paper&#39;s reported Δa = 0.021 (std. err. ...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C6</code></td><td>supporting</td><td>scalar</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>Table1.tex row &#39;Employment elasticity w.r.t. MW&#39;, column (1) reports exactly 0.024 with clustered std. err. (0.025) (tables/tables/Table1.tex lines 13-14). This is byte-for-byte identical to the paper value of 0.024 (std. err. 0.025), we...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C7</code></td><td>supporting</td><td>scalar</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>Table1.tex (tables/tables/Table1.tex) reports the two normalization constants across columns exactly as the paper: line 18 &#39;Jobs below new MW ($\overline{b}\ \_{-1}$)&#39; = 0.086 in every column, and line 19 &#39;%$\Delta$ MW&#39; = 0.101 in every ...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C8</code></td><td>headline</td><td>figure</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>The expected file figures/figures/Figure2.pdf exists and, on visual inspection, faithfully reproduces the paper&#39;s Figure II event study. It shows light-blue bars of employment change by $1 wage bin on an x-axis from -4 to 17+ (&#39;Wage bins...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C9</code></td><td>supporting</td><td>table</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>The produced tables/tables/Table1.tex reproduces every point estimate in paper_value essentially exactly. Row-by-row (cols 1-7): Missing jobs Δb = -0.018,-0.018,-0.018,-0.016,-0.016,-0.015,(blank); Excess jobs Δa = 0.021,0.018,0.020,0.01...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C10</code></td><td>supporting</td><td>figure</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>The exact expected file figures/figures/Figure3.pdf exists and was regenerated by this run (replication_log.json lists it as an output of step 2, which ports Table1_for_QJE.do / makefigure_massovertime to R; fix_severity.json shows only ...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C11</code></td><td>supporting</td><td>scalar_range</td>
+            <td class="st" style="color: #8250df">out of scope</td>
+            <td>deterministic</td>
+            <td>No plan step targeted this claim; treated as out_of_scope (excluded from the score, not a failure): This is a text-only rescaling of the Table 1 overall affected-employment CI by the fixed share ratio 0.432/0.086=5.02; the repo ships no ...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C12</code></td><td>headline</td><td>scalar</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>The &#39;Overall&#39; row of tables/tables/Table4.tex reports %ΔW = 0.068 (0.010), %ΔW_No spillover = 0.041 (0.009), and the spillover share (%ΔW - %ΔW_No spillover)/%ΔW = 0.397*** (std. err. 0.119). This exactly reproduces the paper&#39;s reported ...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C13</code></td><td>supporting</td><td>scalar</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>Table4.tex (tables/tables/Table4.tex) reports two subgroup rows matching the claim: row &#39;m1&#39; (incumbents) shows %ΔW = 0.095*** (0.020) and spillover share = 0.422** (0.181); row &#39;m2&#39; (new entrants) shows %ΔW = 0.019 (0.013) and spillover...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C14</code></td><td>supporting</td><td>table</td>
+            <td class="st" style="color: #9a6700">partial</td>
+            <td>agent</td>
+            <td>The claim&#39;s nominal expected file tables/tables/Table4.tex holds the AUTHORS&#39; original Stata output (incumbent 0.095/0.055/0.422, new entrant 0.019/0.023/-0.178 — identical to the paper), which cannot be this run&#39;s product: the R port&#39;s ...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C15</code></td><td>supporting</td><td>scalar</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>Table2.tex row 3 (&#39;Missing jobs below new MW ($\Delta$ b)&#39;) reports the demographic-subsample Δb estimates. Column (1) = -0.065*** (SE 0.010) corresponds to &#39;Less than high school&#39; and column (2) = -0.032*** (SE 0.007) corresponds to &#39;Hi...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C16</code></td><td>supporting</td><td>table</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>Table2.tex (tables/tables/Table2.tex) was produced by plan step 5 (Table2_for_QJE.do) with 8 subgroup columns matching the claim&#39;s order: (1) Less than HS, (2) HS or less, (3) Teen, (4) Women, (5) Black or Hispanic, (6-8) Card-Krueger Hi...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C17</code></td><td>supporting</td><td>scalar</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>Table2.tex &#39;Missing jobs below new MW (Δ b)&#39; row reads -0.065, -0.032, -0.114, -0.023, -0.028, -0.094, -0.020, -0.004 across columns (1)-(8). Columns 6/7/8 correspond to the high/middle/low predicted-exposure-probability groups, giving Δ...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C18</code></td><td>supporting</td><td>figure</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>The run produced both panels of paper Figure IV via the Stata-&gt;R port (rport/figure4.R -&gt; figures/dofiles/Figure4incumbent_firstyear.pdf and Figure4newentrant_firstyear.pdf; the figures/figures/*.pdf copies are the 2019 author originals,...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C19</code></td><td>supporting</td><td>scalar</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>In tables/tables/Table3.tex, the &#39;Emp. elasticity w.r.t. affected wage&#39; row reports: Tradable (col 2) -1.910 (s.e. 3.922), Nontradable (col 3) 0.387 (s.e. 0.597), and Manufacturing (col 8) -1.385 (s.e. 2.956). These reproduce the paper v...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C20</code></td><td>supporting</td><td>table</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>The replicated tables/tables/Table3.tex reproduces the by-industry decomposition cell-for-cell against paper_value. Missing jobs (Δb) row reads Overall -0.019, Tradable -0.016, Nontradable -0.066, Construction -0.003, Other -0.011, Resta...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C21</code></td><td>supporting</td><td>figure</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>Both constituent panels of Figure V were produced. Figure5_b.pdf displays an essentially flat green employment-change fit annotated &#39;Emp. change, slope = 0.006 (0.048)&#39;, matching the claim&#39;s employment_change_slope=0.006 (s.e. 0.048) exa...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C22</code></td><td>supporting</td><td>figure</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>The run executed step 9 (`Rscript rport/figure6.R`, replication_log.json), emitting `figures/figures/Figure6.pdf` (the exact expected file), `logs/figure6_bins.csv`, and stdout `Aggregate employment elasticity w.r.t. MW = -0.089 (0.025),...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C23</code></td><td>supporting</td><td>scalar</td>
+            <td class="st" style="color: #8250df">out of scope</td>
+            <td>deterministic</td>
+            <td>No plan step targeted this claim; treated as out_of_scope (excluded from the score, not a failure): Event-by-event distribution of significance is an appendix-level robustness exercise (stacked_events_event_specific_regressions_* / stack...</td>
+          </tr>
+        
+          <tr>
+            <td><code>C24</code></td><td>headline</td><td>qualitative</td>
+            <td class="st" style="color: #1a7f37">match</td>
+            <td>agent</td>
+            <td>All four qualitative sub-features required by the verification instructions are demonstrated in the run&#39;s produced outputs. (i) Negative missing-jobs below the minimum: figure2_data.csv shows bins -4..-1 negative with the significant bin...</td>
+          </tr>
+        
+        </tbody>
+      </table>
+    </div>
+  </details>
+
+  
+  <details>
+    <summary>Replication run (9/9 steps, 2109s)</summary>
+    <div class="inner">
+      <p class="sub">Python 3.12.8 (pyreadstat for .dta schema inspection) · GPU 4x NVIDIA RTX A6000 (not needed; econometrics is CPU-bound)</p>
+      <table>
+        <thead><tr><th>Step</th><th>What it did</th><th>Result</th><th>Time</th></tr></thead>
+        <tbody><tr><td>1</td><td>Environment + package setup; verify data inputs; compile programs.</td><td class="st" style="color: #1a7f37">ok</td><td>90s</td></tr><tr><td>2</td><td>Table 1 headline results (6 control specs) + Figure 3 (missing/excess jobs over event time).</td><td class="st" style="color: #1a7f37">ok</td><td>726s</td></tr><tr><td>3</td><td>Figure 2: event-study of employment change by $ wage bin relative to the new MW, with cumulative sum.</td><td class="st" style="color: #1a7f37">ok</td><td>102s</td></tr><tr><td>4</td><td>Table 4: total %dW affected wage, no-spillover counterfactual, spillover share (overall, demographic subgroups, incumbents m1 / new entrants m2).</td><td class="st" style="color: #1a7f37">ok</td><td>400s</td></tr><tr><td>5</td><td>Table 2: heterogeneity by worker type -- missing jobs (Delta_b) and own-wage employment elasticity per demographic group.</td><td class="st" style="color: #1a7f37">ok</td><td>400s</td></tr><tr><td>6</td><td>Table 3: sectoral heterogeneity (1992-2016 industry panel) -- missing-jobs bite and own-wage employment elasticity by sector.</td><td class="st" style="color: #1a7f37">ok</td><td>228s</td></tr><tr><td>7</td><td>Figure 4: matched/longitudinal CPS -- missing/excess-jobs wage-bin figures for incumbents and new entrants.</td><td class="st" style="color: #1a7f37">ok</td><td>150s</td></tr><tr><td>8</td><td>Figure 5: total/missing/excess employment change vs minimum-to-median (Kaitz) wage ratio across events.</td><td class="st" style="color: #1a7f37">ok</td><td>8s</td></tr><tr><td>9</td><td>Figure 6 / A11: classic TWFE-logMW aggregate employment elasticity + wage-bin decomposition.</td><td class="st" style="color: #1a7f37">ok</td><td>5s</td></tr></tbody>
+      </table>
+    </div>
+  </details>
+  
+
+  
+
+  <details>
+    <summary>Where to look (artifacts)</summary>
+    <div class="inner refs">
+      <p>The full machine-readable record is on disk next to this report:</p>
+      <ul>
+        <li><code>verify/verdicts.json</code> — every claim verdict, with the grader's cited rationale.</li>
+        <li><code>verify/replication_score.json</code> — the score and tier breakdown.</li>
+        <li><code>replication/replication_log.json</code> — step-by-step execution, with the fixes applied.</li>
+        <li><code>replication/codebase.diff</code> — every change made to the provided code.</li>
+        
+        
+        <li><code>replication/codebase/</code> — the patched code that was actually run.</li>
+      </ul>
+    </div>
+  </details>
+
+  <footer>Generated by Veritas</footer>
+</div>
+</body>
+</html>

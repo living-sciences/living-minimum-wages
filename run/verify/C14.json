@@ -1,0 +1,196 @@
+{
+  "claim_id": "C14",
+  "status": "partial",
+  "structured": {
+    "replicated_table": {
+      "columns": [
+        "%\u0394w",
+        "%\u0394w_no_spillover",
+        "spillover_share"
+      ],
+      "rows": [
+        {
+          "label": "Overall",
+          "values": [
+            0.068,
+            0.041,
+            0.397
+          ]
+        },
+        {
+          "label": "Less than high school",
+          "values": [
+            0.077,
+            0.048,
+            0.37
+          ]
+        },
+        {
+          "label": "Teen",
+          "values": [
+            0.081,
+            0.053,
+            0.347
+          ]
+        },
+        {
+          "label": "High school or less",
+          "values": [
+            0.073,
+            0.043,
+            0.402
+          ]
+        },
+        {
+          "label": "Women",
+          "values": [
+            0.07,
+            0.045,
+            0.359
+          ]
+        },
+        {
+          "label": "Black or Hispanic",
+          "values": [
+            0.045,
+            0.037,
+            0.179
+          ]
+        },
+        {
+          "label": "Tradeable",
+          "values": [
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Nontradeable",
+          "values": [
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "label": "Incumbent",
+          "values": [
+            0.067,
+            0.033,
+            0.511
+          ]
+        },
+        {
+          "label": "New entrant",
+          "values": [
+            0.042,
+            0.038,
+            0.073
+          ]
+        }
+      ]
+    },
+    "paper_table": {
+      "columns": [
+        "%\u0394w",
+        "%\u0394w_no_spillover",
+        "spillover_share"
+      ],
+      "rows": [
+        {
+          "label": "Overall",
+          "values": [
+            0.068,
+            0.041,
+            0.397
+          ]
+        },
+        {
+          "label": "Less than high school",
+          "values": [
+            0.077,
+            0.048,
+            0.37
+          ]
+        },
+        {
+          "label": "Teen",
+          "values": [
+            0.081,
+            0.053,
+            0.347
+          ]
+        },
+        {
+          "label": "High school or less",
+          "values": [
+            0.073,
+            0.043,
+            0.402
+          ]
+        },
+        {
+          "label": "Women",
+          "values": [
+            0.07,
+            0.045,
+            0.359
+          ]
+        },
+        {
+          "label": "Black or Hispanic",
+          "values": [
+            0.045,
+            0.037,
+            0.179
+          ]
+        },
+        {
+          "label": "Tradeable",
+          "values": [
+            0.058,
+            0.065,
+            -0.114
+          ]
+        },
+        {
+          "label": "Nontradeable",
+          "values": [
+            0.056,
+            0.043,
+            0.237
+          ]
+        },
+        {
+          "label": "Incumbent",
+          "values": [
+            0.095,
+            0.055,
+            0.422
+          ]
+        },
+        {
+          "label": "New entrant",
+          "values": [
+            0.019,
+            0.023,
+            -0.178
+          ]
+        }
+      ]
+    },
+    "value_found": true
+  },
+  "rationale": "The claim's nominal expected file tables/tables/Table4.tex holds the AUTHORS' original Stata output (incumbent 0.095/0.055/0.422, new entrant 0.019/0.023/-0.178 \u2014 identical to the paper), which cannot be this run's product: the R port's own reproduction (replication_log.json step 4 stdout 'incumbent(m1) %dW=0.067 spillover=0.511; new-entrant(m2) %dW=0.042 spillover=0.073', step 7, and the run-produced tables/dofiles/Table4.tex + logs/table4_groups.csv) got different incumbent/new-entrant numbers. Grading the run-produced evidence: the Overall + 5 demographic rows match the paper to the printed precision \u2014 Overall 0.068/0.041/0.397, HSD 0.077/0.048/0.370, teen 0.081/0.053/0.347, HSL 0.073/0.043/0.402, female 0.070/0.045/0.359, BH 0.045/0.037/0.179 (BH shown non-significant and smaller, as the paper reports) \u2014 18 of 30 cells within 5%. However: (a) the Tradeable and Nontradeable rows were never computed \u2014 rport/groups.R only defines groups overall/HSD/HSL/teen/female/BH, so paper values 0.058/0.065/-0.114 and 0.056/0.043/0.237 have no produced counterpart; (b) Incumbent 0.067/0.033/0.511 deviates from paper 0.095/0.055/0.422 by ~30%/40%/21%; (c) New entrant 0.042/0.038/0.073 deviates from paper 0.019/0.023/-0.178 by >60% with the spillover share flipping sign (small positive vs the paper's -0.178). The run's step-7 note acknowledges the incumbent/new-entrant divergence, attributing it to omitted placebo controls / far-above bins not shipped as columns; fix_severity.json also flags the Stata\u2192R port as load-checked but not numerically validated. Directionally the qualitative story holds (spillovers ~40% overall, smaller for Black/Hispanic, incumbents > new entrants), but the tradeable and new-entrant near-zero/negative shares specified in the verification instruction were not reproduced (tradeable absent; new entrant positive 0.073). Mixed cells \u2192 partial.",
+  "evidence_refs": [
+    "replication/codebase/tables/dofiles/Table4.tex",
+    "replication/codebase/tables/tables/Table4.tex",
+    "replication/logs/table4_groups.csv",
+    "replication/codebase/rport/groups.R",
+    "replication/replication_log.json",
+    "assess/fix_severity.json",
+    "analyze/replication_plan.json"
+  ],
+  "graded_by": "agent"
+}

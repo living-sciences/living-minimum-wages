@@ -1,0 +1,21 @@
+{
+  "claim_id": "C7",
+  "status": "match",
+  "structured": {
+    "replicated_value": {
+      "jobs_below_new_MW": 0.086,
+      "mean_real_MW_increase": 0.101
+    },
+    "paper_value": {
+      "jobs_below_new_MW": 0.086,
+      "mean_real_MW_increase": 0.101
+    },
+    "uncertainty": null,
+    "value_found": true
+  },
+  "rationale": "Table1.tex (tables/tables/Table1.tex) reports the two normalization constants across columns exactly as the paper: line 18 'Jobs below new MW ($\\overline{b}\\ \\_{-1}$)' = 0.086 in every column, and line 19 '%$\\Delta$ MW' = 0.101 in every column. Line 20 also confirms '# Event = 138'. These are identical to the paper values (b\u0304_{-1}=0.086, mean real MW increase=0.101), i.e. 0% relative error, well within the 5% match band.",
+  "evidence_refs": [
+    "/workspace/output/replication/codebase/tables/tables/Table1.tex"
+  ],
+  "graded_by": "agent"
+}

@@ -1,0 +1,35 @@
+{
+  "claim_id": "C8",
+  "status": "match",
+  "structured": {
+    "file_exists": true,
+    "evidence_found": true,
+    "file_path_checked": [
+      "replication/codebase/figures/figures/Figure2.pdf"
+    ],
+    "structural_features_present": [
+      "Blue (light-blue) bars of employment change by $1 wage bin",
+      "x-axis in $ relative to new MW, running from -4 to 17+",
+      "95% CI error bars (rcap) on each bar",
+      "Sharp large negative bar in the bin just below MW (bin -1, ~-0.0135)",
+      "Large positive spike at the MW bin (bin 0, ~0.015) of comparable magnitude",
+      "Significant positive bar around $3 above MW (bin 3, CI above zero)",
+      "Small/statistically insignificant bars in upper-tail bins ($5+)",
+      "Overlaid red running cumulative-sum line",
+      "y-axis range approx -0.02 to 0.02"
+    ],
+    "structural_features_missing": [
+      "Inset text box reporting Delta_a=0.021 (0.003), Delta_b=-0.018 (0.004), %change affected employment=0.028 (0.029), %change affected wage=0.068 (0.010) is not rendered on the produced figure",
+      "Running-sum line is drawn solid pink rather than dashed red"
+    ],
+    "structural_match": true
+  },
+  "rationale": "The expected file figures/figures/Figure2.pdf exists and, on visual inspection, faithfully reproduces the paper's Figure II event study. It shows light-blue bars of employment change by $1 wage bin on an x-axis from -4 to 17+ ('Wage bins in $ relative to new MW'), each with 95% CI (rcap) error bars, and an overlaid red running cumulative-sum line. The signature pattern is exactly as claimed: a sharp negative spike in the bin just below the MW (bin -1, ~-0.0135), an equal-and-opposite large positive spike at the MW bin (bin 0, ~+0.015), a smaller but CI-above-zero positive bar around $3 above, and small/insignificant bars across the upper tail ($5 and above). The step (plan step 3, 'Figure 2: event-study of employment change...') ran successfully via the R/fixest port of the original Stata do-file (Stata was license-gated; fix_severity.json rates this port 'major' but methodology-preserving), with the log reporting 'E=0.571; per-bin estimates for bins -4..+7'. Two minor cosmetic annotations from the paper are not reproduced: the inset text box with Delta_a/Delta_b and the affected-employment/wage percentages is absent from the plotted PDF, and the running-sum line is solid pink rather than dashed red. These are annotation/style differences, not structural contradictions; all core described visual features match, so the verdict is match.",
+  "evidence_refs": [
+    "replication/codebase/figures/figures/Figure2.pdf",
+    "analyze/replication_plan.json",
+    "replication/replication_log.json",
+    "assess/fix_severity.json"
+  ],
+  "graded_by": "agent"
+}

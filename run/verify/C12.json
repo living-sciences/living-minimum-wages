@@ -1,0 +1,15 @@
+{
+  "claim_id": "C12",
+  "status": "match",
+  "structured": {
+    "replicated_value": 0.397,
+    "paper_value": 0.397,
+    "uncertainty": 0.119,
+    "value_found": true
+  },
+  "rationale": "The 'Overall' row of tables/tables/Table4.tex reports %\u0394W = 0.068 (0.010), %\u0394W_No spillover = 0.041 (0.009), and the spillover share (%\u0394W - %\u0394W_No spillover)/%\u0394W = 0.397*** (std. err. 0.119). This exactly reproduces the paper's reported 0.397 (std. err. 11.9%) for the spillover share of the overall wage increase. The replicated value 0.397 equals the paper value 0.397 (0% relative error, well within \u00b11\u03c3 = 0.119), so the claim is a match. The consistency check (0.068 - 0.041)/0.068 = 0.397 also holds internally.",
+  "evidence_refs": [
+    "/workspace/output/replication/codebase/tables/tables/Table4.tex"
+  ],
+  "graded_by": "agent"
+}

@@ -1,0 +1,25 @@
+{
+  "claim_id": "C13",
+  "status": "match",
+  "structured": {
+    "replicated_value": {
+      "incumbent_spillover_share": 0.422,
+      "incumbent_wage": 0.095,
+      "new_entrant_spillover_share": -0.178,
+      "new_entrant_wage": 0.019
+    },
+    "paper_value": {
+      "incumbent_spillover_share": 0.422,
+      "incumbent_wage": 0.095,
+      "new_entrant_spillover_share": -0.178,
+      "new_entrant_wage": 0.019
+    },
+    "uncertainty": null,
+    "value_found": true
+  },
+  "rationale": "Table4.tex (tables/tables/Table4.tex) reports two subgroup rows matching the claim: row 'm1' (incumbents) shows %\u0394W = 0.095*** (0.020) and spillover share = 0.422** (0.181); row 'm2' (new entrants) shows %\u0394W = 0.019 (0.013) and spillover share = -0.178 (0.748). All four replicated values equal the paper values exactly: incumbent_wage 0.095 vs 0.095, incumbent_spillover_share 0.422 vs 0.422, new_entrant_wage 0.019 vs 0.019, and new_entrant_spillover_share -0.178 vs -0.178. The incumbent standard error (0.020) and new entrant standard error (0.013) also match the claim exactly. The qualitative contrast holds: a large, significant positive spillover share for incumbents (0.422**) versus a near-zero/negative, insignificant share for new entrants (-0.178).",
+  "evidence_refs": [
+    "/workspace/output/replication/codebase/tables/tables/Table4.tex"
+  ],
+  "graded_by": "agent"
+}

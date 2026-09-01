@@ -1,0 +1,19 @@
+{
+  "claim_id": "C24",
+  "status": "match",
+  "structured": {
+    "observed_behavior": "The replicated headline outputs jointly show all four features of the paper's synthesis. Figure2 (figure2_data.csv): bins below the new MW are negative missing jobs (bin -1 = -0.0137, CI [-0.0192,-0.0082]; bins -2..-4 also negative), bin 0 is a large significant positive excess-jobs spike (+0.0151, CI [0.0105,0.0197]), bins more than $4 above (+5,+6,+7) are tiny with CIs essentially spanning zero (-0.00030, +0.00114, +0.00029), and the cumulative sum (totest) ends near zero (+0.0031), i.e. no detectable net employment loss. Table1.tex confirms: Missing jobs (Delta b) = -0.018*** and Excess jobs (Delta a) = 0.021*** (closely matching, opposite signs), %Delta affected wages = 0.068*** to 0.043*** (all significant positive across the 6 specs), and %Delta affected employment = 0.028/0.000/0.022/-0.002/-0.019/-0.000 with SEs 0.021-0.029 (all statistically insignificant).",
+    "claim_paraphrase": "The paper's overarching conclusion: missing jobs below the minimum are closely matched by excess jobs at/just above it (no net employment loss), affected wages rise significantly, and there is no employment change more than $4 above the minimum.",
+    "semantic_match": true
+  },
+  "rationale": "All four qualitative sub-features required by the verification instructions are demonstrated in the run's produced outputs. (i) Negative missing-jobs below the minimum: figure2_data.csv shows bins -4..-1 negative with the significant bin -1 = -0.0137 (CI [-0.0192,-0.0082]), and Table1.tex reports 'Missing jobs below new MW (Delta b) = -0.018***'. (ii) Approximately equal positive excess at/just above: figure2 bin 0 = +0.0151*** (CI [0.0105,0.0197]) and Table1 'Excess jobs above new MW (Delta a) = 0.021***' closely match the missing-jobs magnitude with opposite sign; the cumulative sum (totest) ends at +0.0031, near zero, indicating no detectable overall employment loss. (iii) Small/insignificant employment change more than $4 above: figure2 bins +5,+6,+7 are ~0 (-0.00030, +0.00114, +0.00029) with CIs essentially including zero, and Table1's '%Delta affected employment' row is 0.028/0.000/0.022/-0.002/-0.019/-0.000 with SEs of 0.021-0.029 (all insignificant). (iv) Significant positive affected-wage effect: Table1 '%Delta affected wages' = 0.068***..0.043*** significant across all six specifications. The replication_log.json step 2/3 notes corroborate these values (Delta_b=-0.018, Delta_a=0.021, %dW=0.068***, employment elasticity ~0, cumulative sum near 0). The fix_severity.json fixes (Stata->R/fixest port; a data.table name-collision bug fix in figure2.R that had caused all-NA estimates) are relevant to this code path but are rated major-not-critical and, importantly, the corrected figure2.R now emits finite, sign-correct estimates matching the paper's described pattern, so the produced evidence faithfully reflects the paper's method. All four features hold, so the synthesis claim matches.",
+  "evidence_refs": [
+    "output/replication/logs/figure2_data.csv",
+    "output/replication/codebase/tables/tables/Table1.tex",
+    "output/replication/codebase/rport/figure2.R",
+    "output/replication/replication_log.json",
+    "output/assess/fix_severity.json",
+    "output/analyze/replication_plan.json"
+  ],
+  "graded_by": "agent"
+}

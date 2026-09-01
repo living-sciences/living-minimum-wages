@@ -1,0 +1,8 @@
+{
+  "claim_id": "C11",
+  "status": "out_of_scope",
+  "structured": {},
+  "rationale": "No plan step targeted this claim; treated as out_of_scope (excluded from the score, not a failure): This is a text-only rescaling of the Table 1 overall affected-employment CI by the fixed share ratio 0.432/0.086=5.02; the repo ships no dedicated script that outputs the [-0.13,0.37] interval, and it is trivially derivable from the Table1 (step 2) output.",
+  "evidence_refs": [],
+  "graded_by": "deterministic"
+}

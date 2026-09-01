@@ -1,0 +1,7 @@
+[kaitz] prominent events: 236  range 0.335-0.666
+  G0: n= 48  kaitz 0.335-0.443 mean 0.414  eras ['new', 'original']
+  G1: n= 47  kaitz 0.443-0.481 mean 0.463  eras ['new', 'original']
+  G2: n= 47  kaitz 0.481-0.510 mean 0.495  eras ['new', 'original']
+  G3: n= 47  kaitz 0.511-0.548 mean 0.528  eras ['new', 'original']
+  G4: n= 47  kaitz 0.548-0.666 mean 0.582  eras ['new', 'original']
+running joint regression over 5 groups ...

@@ -1,0 +1,801 @@
+{
+  "paper": {
+    "title": "The Effect of Minimum Wages on Low-Wage Jobs",
+    "arxiv_id": null,
+    "year": 2019,
+    "authors": [
+      "Cengiz",
+      "Dube",
+      "Lindner",
+      "Zipperer"
+    ]
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "description": "Over the five years following the minimum wage increase, the overall number of low-wage jobs remained essentially unchanged: the change in affected employment was a statistically insignificant +2.8% (std. err. 2.9%).",
+      "type": "scalar",
+      "tier": "headline",
+      "verification": "Read the '%\u0394 affected employment' row, column (1) of the baseline results in Table1.tex (equivalently the '%\u0394 affected employment' value in the box of Figure II / Figure2.pdf). The value is computed as (\u0394a + \u0394b) / b\u0304_{-1}. Confirm the point estimate is about 0.028 with a clustered standard error near 0.029 and that it is statistically insignificant (positive but not significant).",
+      "paper_value": 0.028,
+      "units": "fraction (proportional change in affected employment)",
+      "expected_output_file": "tables/tables/Table1.tex",
+      "provenance": {
+        "section": "III. Results",
+        "page": 1425,
+        "quote": "the employment for affected workers rose by a statistically insignificant 2.8% (std. err. 2.9%)"
+      },
+      "notes": "This is the paper's central employment result. \u0394a=0.021 (0.003) and \u0394b=-0.018 (0.004) sum to the affected-employment numerator; b\u0304_{-1}=0.086."
+    },
+    {
+      "id": "C2",
+      "description": "The minimum wage raised the average hourly wage of affected workers by 6.8% (std. err. 1.0%), a statistically significant increase.",
+      "type": "scalar",
+      "tier": "headline",
+      "verification": "Read the '%\u0394 affected wages' row, column (1) of Table1.tex (equivalently the '%\u0394 affected wage' value in the Figure II / Figure2.pdf box). Confirm a point estimate near 0.068 with a clustered standard error near 0.010, significant at the 1% level.",
+      "paper_value": 0.068,
+      "units": "fraction (proportional change in average wage of affected workers)",
+      "expected_output_file": "tables/tables/Table1.tex",
+      "provenance": {
+        "section": "III. Results",
+        "page": 1425,
+        "quote": "the effect of the minimum wage on average wages is 6.8% (std. err. 1.0%), which is statistically significant"
+      },
+      "notes": "Computed via equation (2) from the wage-bill and employment changes."
+    },
+    {
+      "id": "C3",
+      "description": "The estimated employment elasticity with respect to own wage (labor demand elasticity) is 0.411 (std. err. 0.430); the confidence interval rules out own-wage elasticities more negative than -0.45 at the 95% level.",
+      "type": "scalar",
+      "tier": "headline",
+      "verification": "Read the 'Emp. elasticity w.r.t. affected wage' row, column (1) of Table1.tex. Confirm the point estimate is near 0.411 with clustered std. err. near 0.430. Check that the implied 95% CI lower bound is approximately -0.45 (i.e., it excludes elasticities more negative than about -0.45).",
+      "paper_value": 0.411,
+      "units": "elasticity (dimensionless)",
+      "expected_output_file": "tables/tables/Table1.tex",
+      "provenance": {
+        "section": "III. Results",
+        "page": 1425,
+        "quote": "The estimate for the elasticity of employment with respect to own wage is 0.411 (std. err. 0.430). The confidence intervals rule out any own-wage elasticities more negative than \u22120.450"
+      },
+      "notes": "Computed as (%\u0394 affected employment)/(%\u0394 affected wage) with delta-method standard errors."
+    },
+    {
+      "id": "C4",
+      "description": "There was a clear, significant drop in the number of jobs paying below the new minimum wage: the missing jobs \u0394b amount to -1.8% (std. err. 0.4%) of total pretreatment employment, averaged over the five post-treatment years.",
+      "type": "scalar",
+      "tier": "supporting",
+      "verification": "Read the 'Missing jobs below new MW (\u0394b)' row, column (1) of Table1.tex (also shown as \u0394b in the Figure II / Figure2.pdf box). Confirm the point estimate is near -0.018 with clustered std. err. near 0.004, significant.",
+      "paper_value": -0.018,
+      "units": "fraction of pretreatment total employment",
+      "expected_output_file": "tables/tables/Table1.tex",
+      "provenance": {
+        "section": "III. Results",
+        "page": 1424,
+        "quote": "there is a clear and significant drop in the number of jobs below the new minimum wage, amounting to 1.8% (std. err. 0.4%) of the total pretreatment employment"
+      },
+      "notes": "Around three-quarters of this reduction occurs in the $1 wage bin just below the new minimum."
+    },
+    {
+      "id": "C5",
+      "description": "There is a clear increase in excess jobs at or above the new minimum wage: \u0394a is +2.1% (std. err. 0.3%) of total pretreatment employment, averaged over the five post-treatment years.",
+      "type": "scalar",
+      "tier": "supporting",
+      "verification": "Read the 'Excess jobs above new MW (\u0394a)' row, column (1) of Table1.tex (also shown as \u0394a in the Figure II / Figure2.pdf box). Confirm the point estimate is near 0.021 with clustered std. err. near 0.003.",
+      "paper_value": 0.021,
+      "units": "fraction of pretreatment total employment",
+      "expected_output_file": "tables/tables/Table1.tex",
+      "provenance": {
+        "section": "III. Results",
+        "page": 1424,
+        "quote": "the excess jobs between the new minimum and $4 above it represents 2.1% (std. err. 0.3%) of the total pretreatment employment"
+      },
+      "notes": "Excess jobs closely match the missing jobs, implying near-zero net employment change."
+    },
+    {
+      "id": "C6",
+      "description": "The employment elasticity with respect to the minimum wage is 0.024 (std. err. 0.025), statistically insignificant, with a 95% CI ruling out substantial aggregate employment reductions such as the -0.074 of Meer and West (2016).",
+      "type": "scalar",
+      "tier": "supporting",
+      "verification": "Read the 'Employment elasticity w.r.t. MW' row, column (1) of Table1.tex, computed as (\u0394a+\u0394b) divided by the sample-averaged minimum wage increase %\u0394MW (\u224810.1%). Confirm the point estimate is near 0.024 with clustered std. err. near 0.025, insignificant.",
+      "paper_value": 0.024,
+      "units": "elasticity (dimensionless)",
+      "expected_output_file": "tables/tables/Table1.tex",
+      "provenance": {
+        "section": "III. Results",
+        "page": 1425,
+        "quote": "calculate the employment elasticity with respect to the minimum wage of 0.024 (std. err. 0.025). This estimate is statistically insignificant"
+      }
+    },
+    {
+      "id": "C7",
+      "description": "In the year before the events, on average 8.6% of workers earned below the new minimum wage (b\u0304_{-1}), and the mean real minimum wage increase across the 138 events was 10.1%.",
+      "type": "scalar",
+      "tier": "supporting",
+      "verification": "Read the 'Jobs below new MW (b\u0304_{-1})' and '%\u0394 MW' rows of Table1.tex (these appear as constants across columns). Confirm b\u0304_{-1} \u2248 0.086 and %\u0394MW \u2248 0.101. These are the normalization denominators used to convert \u0394a+\u0394b into affected-employment and minimum-wage elasticities.",
+      "paper_value": {
+        "jobs_below_new_MW": 0.086,
+        "mean_real_MW_increase": 0.101
+      },
+      "units": "fraction",
+      "expected_output_file": "tables/tables/Table1.tex",
+      "provenance": {
+        "section": "II.C Data and Sample Construction",
+        "page": 1421,
+        "quote": "on average, 8.6% of workers were below the new minimum wage in the year before these events and the mean real minimum wage increase was 10.1%"
+      }
+    },
+    {
+      "id": "C8",
+      "description": "The event-study estimates of employment change by dollar wage bin relative to the new minimum wage: a sharp negative spike just below the minimum, an equal-sized positive spike at/just above it, and small statistically insignificant changes far above the minimum.",
+      "type": "figure",
+      "tier": "headline",
+      "verification": "Inspect Figure2.pdf. It should show blue bars of employment change (five-year post-treatment average) by $1 wage bin relative to the new minimum (x-axis roughly -4 to 17+), with 95% CI error bars and a dashed red running-sum line. Key features: a clear negative bar in the bin just below MW, a large positive bar at the MW bin, a significant positive bar around $3 above, and small/insignificant bars in upper-tail bins ($5 and above). The inset box should report \u0394a\u22480.021 (0.003), \u0394b\u2248-0.018 (0.004), %\u0394 affected employment\u22480.028 (0.029), %\u0394 affected wage\u22480.068 (0.010).",
+      "expected_output_file": "figures/figures/Figure2.pdf",
+      "provenance": {
+        "section": "III. Results",
+        "page": 1423,
+        "quote": "Figure II shows the main results from our event study analysis... The blue bars show for each dollar bin... the estimated average employment changes... over the five-year post-treatment"
+      },
+      "notes": "Paper Figure II; code names it Figure2."
+    },
+    {
+      "id": "C9",
+      "description": "Across seven specifications with progressively richer controls for time-varying heterogeneity, the wage effect is always significant (ranging 4.3%-6.9%) while the affected-employment change is never statistically significant (ranging -1.9% to 3.6%).",
+      "type": "table",
+      "tier": "supporting",
+      "verification": "Read Table1.tex and compare cells against paper_value. Columns (2)-(3) add bin-state linear/quadratic trends, (4)-(6) add division-period effects, (7) uses the simpler state-by-period method. Confirm %\u0394 affected wages is significant in every column and %\u0394 affected employment is insignificant in every column. Numeric tolerance per the grader's rubric; the point is the qualitative robustness plus matching the listed point estimates.",
+      "paper_value": {
+        "columns": [
+          "(1)",
+          "(2)",
+          "(3)",
+          "(4)",
+          "(5)",
+          "(6)",
+          "(7)"
+        ],
+        "rows": [
+          {
+            "label": "Missing jobs below new MW (\u0394b)",
+            "values": [
+              -0.018,
+              -0.018,
+              -0.018,
+              -0.016,
+              -0.016,
+              -0.015,
+              null
+            ]
+          },
+          {
+            "label": "Excess jobs above new MW (\u0394a)",
+            "values": [
+              0.021,
+              0.018,
+              0.02,
+              0.016,
+              0.014,
+              0.015,
+              null
+            ]
+          },
+          {
+            "label": "%\u0394 affected wages",
+            "values": [
+              0.068,
+              0.057,
+              0.068,
+              0.049,
+              0.043,
+              0.05,
+              0.065
+            ]
+          },
+          {
+            "label": "%\u0394 affected employment",
+            "values": [
+              0.028,
+              0.0,
+              0.022,
+              -0.002,
+              -0.019,
+              -0.0,
+              0.027
+            ]
+          },
+          {
+            "label": "Employment elasticity w.r.t. MW",
+            "values": [
+              0.024,
+              0.0,
+              0.019,
+              -0.001,
+              -0.016,
+              -0.0,
+              0.023
+            ]
+          },
+          {
+            "label": "Emp. elasticity w.r.t. affected wage",
+            "values": [
+              0.411,
+              0.006,
+              0.326,
+              -0.032,
+              -0.449,
+              -0.003,
+              0.41
+            ]
+          },
+          {
+            "label": "Jobs below new MW (b\u0304_{-1})",
+            "values": [
+              0.086,
+              0.086,
+              0.086,
+              0.086,
+              0.086,
+              0.086,
+              0.086
+            ]
+          }
+        ]
+      },
+      "units": "fractions / elasticities",
+      "expected_output_file": "tables/tables/Table1.tex",
+      "provenance": {
+        "section": "III.1 Robustness Checks",
+        "page": 1430,
+        "quote": "there is a statistically significant increase in real wages of affected workers in all specifications: these range between 5.7% and 6.9%... the proportionate change in employment for affected workers is never statistically significant"
+      },
+      "notes": "Number of events = 138; number of observations = 847,314 (bin-level) / 4,694,104 (worker-level)."
+    },
+    {
+      "id": "C10",
+      "description": "The missing jobs below the new minimum and excess jobs above it jump sharply at the time of the minimum wage change (\u03c4=0) and persist, largely stable, for five years; pretreatment leads are statistically indistinguishable from zero.",
+      "type": "figure",
+      "tier": "supporting",
+      "verification": "Inspect Figure3.pdf. It should plot two event-time series (years -3 to +4, normalized to 0 at \u03c4=-1): a red dashed line for missing jobs \u0394b (dropping to about -0.02 at \u03c4=0 and staying negative) and a blue solid line for excess jobs \u0394a (jumping to about +0.02 at \u03c4=0 and staying positive), each with 95% CIs. Leads at \u03c4=-2 should be near zero, and both series should show a sharp break at \u03c4=0 that persists through \u03c4=+4.",
+      "expected_output_file": "figures/figures/Figure3.pdf",
+      "provenance": {
+        "section": "III. Results",
+        "page": 1426,
+        "quote": "The red dashed line shows the evolution of the number of jobs... (\u0394b); the blue solid line shows the number of jobs between the new minimum wage and $5 above it (\u0394a) over time."
+      },
+      "notes": "Paper Figure III; code names it Figure3."
+    },
+    {
+      "id": "C11",
+      "description": "Scaling the overall employment estimate to be comparable to teen studies (multiplying by the share ratio 0.432/0.086 = 5.02) yields an affected-share-adjusted 95% CI of [-0.13, 0.37], which rules out most of the -0.1 to -0.3 range of common teen minimum wage elasticities.",
+      "type": "scalar_range",
+      "tier": "supporting",
+      "verification": "This is derived from the minimum-wage employment elasticity (Table1.tex col 1, ~0.024 \u00b1 0.025) scaled by 5.02 (=0.432/0.086, the ratio of the teen affected share to the overall affected share). Confirm from the reported elasticity and standard error that the scaled 95% CI is approximately [-0.13, 0.37]. Judge as a derived range consistent with the underlying scalar.",
+      "paper_value": [
+        -0.13,
+        0.37
+      ],
+      "units": "elasticity (dimensionless, affected-share-adjusted)",
+      "provenance": {
+        "section": "III. Results",
+        "page": 1425,
+        "quote": "This leads to an affected-share-adjusted 95% confidence interval of [\u22120.13, 0.37], which rules out most of the \u22120.1 to \u22120.3 range."
+      },
+      "notes": "No dedicated output file; verify by recomputing from the Table I column-1 elasticity."
+    },
+    {
+      "id": "C12",
+      "description": "Wage spillovers extend up to about $3 above the minimum wage and account for roughly 40% (39.7%, std. err. 11.9%) of the overall wage increase from minimum wage changes.",
+      "type": "scalar",
+      "tier": "headline",
+      "verification": "Read the 'Overall' row of Table4.tex: the total wage effect %\u0394w \u2248 0.068 (0.010), the no-spillover wage effect %\u0394w_no spillover \u2248 0.041 (0.009), and the spillover share (1 - ratio) \u2248 0.397 (0.119). Confirm the spillover share is near 0.397. The text also states spillovers extend up to $3 above the minimum (about the 23rd percentile).",
+      "paper_value": 0.397,
+      "units": "fraction (spillover share of the total wage increase)",
+      "expected_output_file": "tables/tables/Table4.tex",
+      "provenance": {
+        "section": "III.B Wage Spillovers",
+        "page": 1441,
+        "quote": "39.7% (std. err. 11.9%) of the total wage effect is caused by the ripple effect of the minimum wage."
+      },
+      "notes": "The spillover share = (%\u0394w - %\u0394w_no spillover)/%\u0394w."
+    },
+    {
+      "id": "C13",
+      "description": "Wage spillovers accrue to incumbents but not new entrants: incumbents' affected wage rose 9.5% (std. err. 2.0%) with a 42.2% spillover share, while new entrants' affected wage rose only 1.9% (std. err. 1.3%) with a -17.8% spillover share.",
+      "type": "scalar",
+      "tier": "supporting",
+      "verification": "Read the 'Incumbent' and 'New entrant' rows of Table4.tex. Confirm incumbent %\u0394w \u2248 0.095 (0.020) with spillover share \u2248 0.422, and new entrant %\u0394w \u2248 0.019 (0.013) with spillover share \u2248 -0.178. The contrast (large positive spillover share for incumbents vs. near-zero/negative for entrants) is the qualitative claim.",
+      "paper_value": {
+        "incumbent_wage": 0.095,
+        "incumbent_spillover_share": 0.422,
+        "new_entrant_wage": 0.019,
+        "new_entrant_spillover_share": -0.178
+      },
+      "units": "fractions",
+      "expected_output_file": "tables/tables/Table4.tex",
+      "provenance": {
+        "section": "III.B Wage Spillovers",
+        "page": 1443,
+        "quote": "Incumbents receive a larger total wage increase (9.5%)... the spillover share for entrants is \u221217.8%, suggesting that essentially all of the wage increase received by new entrants is by the creation of jobs at or very close to the new minimum."
+      }
+    },
+    {
+      "id": "C14",
+      "description": "The size of wage spillovers by subgroup: total wage effect, no-spillover wage effect, and spillover share for the overall workforce and demographic/sector/incumbency subgroups.",
+      "type": "table",
+      "tier": "supporting",
+      "verification": "Read Table4.tex and compare each row's three columns (%\u0394w, %\u0394w_no spillover, spillover share) to paper_value. Confirm spillover shares are positive and significant for most groups, notably smaller for Black/Hispanic (0.179) and near-zero/negative for tradeable (-0.114) and new entrants (-0.178).",
+      "paper_value": {
+        "columns": [
+          "%\u0394w",
+          "%\u0394w_no_spillover",
+          "spillover_share"
+        ],
+        "rows": [
+          {
+            "label": "Overall",
+            "values": [
+              0.068,
+              0.041,
+              0.397
+            ]
+          },
+          {
+            "label": "Less than high school",
+            "values": [
+              0.077,
+              0.048,
+              0.37
+            ]
+          },
+          {
+            "label": "Teen",
+            "values": [
+              0.081,
+              0.053,
+              0.347
+            ]
+          },
+          {
+            "label": "High school or less",
+            "values": [
+              0.073,
+              0.043,
+              0.402
+            ]
+          },
+          {
+            "label": "Women",
+            "values": [
+              0.07,
+              0.045,
+              0.359
+            ]
+          },
+          {
+            "label": "Black or Hispanic",
+            "values": [
+              0.045,
+              0.037,
+              0.179
+            ]
+          },
+          {
+            "label": "Tradeable",
+            "values": [
+              0.058,
+              0.065,
+              -0.114
+            ]
+          },
+          {
+            "label": "Nontradeable",
+            "values": [
+              0.056,
+              0.043,
+              0.237
+            ]
+          },
+          {
+            "label": "Incumbent",
+            "values": [
+              0.095,
+              0.055,
+              0.422
+            ]
+          },
+          {
+            "label": "New entrant",
+            "values": [
+              0.019,
+              0.023,
+              -0.178
+            ]
+          }
+        ]
+      },
+      "units": "fractions",
+      "expected_output_file": "tables/tables/Table4.tex",
+      "provenance": {
+        "section": "III.B Wage Spillovers",
+        "page": 1442,
+        "quote": "TABLE IV \u2014 The Size of the Wage Spillovers"
+      }
+    },
+    {
+      "id": "C15",
+      "description": "Restricting the sample to less-educated workers produces a larger bite: missing jobs \u0394b is -6.5% for those without a high school degree and -3.2% for those with high school or less, 261% and 78% larger respectively than the overall population estimate of -1.8%.",
+      "type": "scalar",
+      "tier": "supporting",
+      "verification": "Read the 'Missing jobs below new MW (\u0394b)' row of Table2.tex, columns for 'Less than high school' and 'High school or less'. Confirm \u0394b \u2248 -0.065 and -0.032 respectively.",
+      "paper_value": {
+        "less_than_high_school": -0.065,
+        "high_school_or_less": -0.032
+      },
+      "units": "fraction of pretreatment employment",
+      "expected_output_file": "tables/tables/Table2.tex",
+      "provenance": {
+        "section": "III.A.1 By Demographic Groups",
+        "page": 1431,
+        "quote": "for those without a high school degree, the missing jobs estimate, \u0394b, is \u22126.5% while for those with high school or less schooling it is \u22123.2%"
+      }
+    },
+    {
+      "id": "C16",
+      "description": "Across demographic groups the employment elasticities with respect to own wage range from -0.086 to 0.570 and are statistically insignificant in all cases except workers without a high school degree, whose elasticity is 0.475 (std. err. 0.268), marginally significant at 10%.",
+      "type": "table",
+      "tier": "supporting",
+      "verification": "Read Table2.tex and compare cells against paper_value across the eight subgroup columns. Confirm the own-wage employment elasticities lie in the -0.086 to 0.570 range for the first five groups and that only 'Less than high school' (~0.475, s.e. ~0.268) is marginally significant. Excess jobs should closely match missing jobs in all columns, indicating negligible net employment effects.",
+      "paper_value": {
+        "columns": [
+          "Less than HS",
+          "HS or less",
+          "Teen",
+          "Women",
+          "Black or Hispanic",
+          "High prob",
+          "Medium prob",
+          "Low prob"
+        ],
+        "rows": [
+          {
+            "label": "Missing jobs below new MW (\u0394b)",
+            "values": [
+              -0.065,
+              -0.032,
+              -0.114,
+              -0.023,
+              -0.028,
+              -0.094,
+              -0.02,
+              -0.004
+            ]
+          },
+          {
+            "label": "Excess jobs above new MW (\u0394a)",
+            "values": [
+              0.075,
+              0.038,
+              0.127,
+              0.026,
+              0.028,
+              0.1,
+              0.021,
+              0.004
+            ]
+          },
+          {
+            "label": "%\u0394 affected wages",
+            "values": [
+              0.08,
+              0.076,
+              0.083,
+              0.072,
+              0.044,
+              0.073,
+              0.051,
+              0.06
+            ]
+          },
+          {
+            "label": "%\u0394 affected employment",
+            "values": [
+              0.038,
+              0.043,
+              0.03,
+              0.025,
+              -0.004,
+              0.015,
+              0.015,
+              0.011
+            ]
+          },
+          {
+            "label": "Emp. elasticity w.r.t. affected wage",
+            "values": [
+              0.475,
+              0.57,
+              0.356,
+              0.343,
+              -0.086,
+              0.206,
+              0.304,
+              0.184
+            ]
+          },
+          {
+            "label": "Jobs below new MW (b\u0304_{-1})",
+            "values": [
+              0.264,
+              0.145,
+              0.432,
+              0.102,
+              0.133,
+              0.358,
+              0.104,
+              0.027
+            ]
+          }
+        ]
+      },
+      "units": "fractions / elasticities",
+      "expected_output_file": "tables/tables/Table2.tex",
+      "provenance": {
+        "section": "III.A.1 By Demographic Groups",
+        "page": 1431,
+        "quote": "the employment elasticities with respect to own wage range between \u22120.086 and 0.570 for the first five demographic groups... The sole exception is those without a high school degree, for whom the employment elasticity with respect to the wage is 0.475 (std. err. 0.268)"
+      },
+      "notes": "Columns 6-8 are Card-Krueger predicted high/medium/low exposure-probability groups."
+    },
+    {
+      "id": "C17",
+      "description": "Sorting workers by predicted probability of minimum-wage exposure, the high-probability group shows a much larger bite (\u0394b = -9.4%) than the middle group (\u0394b = -2.0%) or low-probability group (\u0394b = -0.4%), yet the employment elasticities are similar across groups; the high-probability own-wage elasticity CI rejects values smaller than -0.251 and larger than 0.663.",
+      "type": "scalar",
+      "tier": "supporting",
+      "verification": "Read the 'Missing jobs below new MW (\u0394b)' row of Table2.tex for the high/medium/low probability columns (~-0.094, -0.020, -0.004). Confirm the high-probability own-wage employment elasticity (Table2.tex, high-prob column) has a 95% CI approximately [-0.251, 0.663] \u2014 described in the text as the most precise own-wage elasticity in the paper.",
+      "paper_value": {
+        "high_prob_bite": -0.094,
+        "middle_prob_bite": -0.02,
+        "low_prob_bite": -0.004,
+        "high_prob_elasticity_CI": [
+          -0.251,
+          0.663
+        ]
+      },
+      "units": "fractions / elasticity",
+      "expected_output_file": "tables/tables/Table2.tex",
+      "provenance": {
+        "section": "III.A.1 By Demographic Groups",
+        "page": 1434,
+        "quote": "the high-probability group shows a considerably larger bite (\u0394b = \u22129.4%) than the middle group (\u0394b = \u22122.0%) and the low-probability group (\u0394b = \u22120.4%)"
+      },
+      "notes": "High-prob = top 10% of predicted exposure probability; low-prob = bottom 50%."
+    },
+    {
+      "id": "C18",
+      "description": "Both new entrants and incumbents show clear missing jobs below and excess jobs at the new minimum, with net employment change near zero: for incumbents \u0394a=1.3% and \u0394b=-1.2%, for new entrants \u0394a=0.6% and \u0394b=-0.5%.",
+      "type": "figure",
+      "tier": "supporting",
+      "verification": "Inspect Figure4incumbent_firstyear.pdf and Figure4newentrant_firstyear.pdf. Each should show bar charts of employment change by $1 wage bin relative to the new MW with a running-sum dashed line. The incumbent panel inset should report \u0394a\u22480.014, \u0394b\u2248-0.013, %\u0394 affected wage\u22480.095; the new-entrant panel inset should report \u0394a\u22480.006, \u0394b\u2248-0.005, %\u0394 affected wage\u22480.019. Confirm both show a below-minimum dip and at-minimum spike, with near-zero cumulative upper-tail change and larger spillovers for incumbents.",
+      "paper_value": {
+        "incumbent": {
+          "delta_a": 0.013,
+          "delta_b": -0.012
+        },
+        "new_entrant": {
+          "delta_a": 0.006,
+          "delta_b": -0.005
+        }
+      },
+      "units": "fractions",
+      "expected_output_file": "figures/figures/Figure4incumbent_firstyear.pdf",
+      "provenance": {
+        "section": "III.A.3 By Pretreatment Employment Status",
+        "page": 1439,
+        "quote": "the excess jobs closely match the missing jobs (for incumbents \u0394a = 1.3% and \u0394b = \u22121.2% and for new entrants \u0394a = 0.6% and \u0394b = \u22120.5%), so the net employment changes are approximately 0"
+      },
+      "notes": "Paper Figure IV, Panels A (new entrants) and B (incumbents); code splits into two files. Figure-box values (0.014/-0.013 and 0.006/-0.005) differ slightly from the text values because the text quotes rounded numbers."
+    },
+    {
+      "id": "C19",
+      "description": "The employment effect varies by sector: the own-wage employment elasticity is large and negative in the tradeable sector (-1.910) and manufacturing (-1.385), but positive and insignificant in the nontradeable sector (0.387, std. err. 0.597).",
+      "type": "scalar",
+      "tier": "supporting",
+      "verification": "Read the 'Emp. elasticity w.r.t. affected wage' row of Table3.tex for the Tradeable, Manufacturing, and Nontradeable columns. Confirm the tradeable elasticity is about -1.910, manufacturing about -1.385, and nontradeable about 0.387 (s.e. ~0.597). Note the tradeable/manufacturing estimates are imprecise/statistically insignificant.",
+      "paper_value": {
+        "tradeable": -1.91,
+        "manufacturing": -1.385,
+        "nontradeable": 0.387
+      },
+      "units": "elasticity (dimensionless)",
+      "expected_output_file": "tables/tables/Table3.tex",
+      "provenance": {
+        "section": "III.A.2 By Industrial Sectors",
+        "page": 1438,
+        "quote": "The implied employment elasticity with respect to own wage is quite large in magnitude in both sectors (\u22121.910 in the tradeable sector and \u22121.385 in manufacturing)... The employment elasticity with respect to own wage in the nontradeable sector is positive (0.387, std. err. 0.597)"
+      }
+    },
+    {
+      "id": "C20",
+      "description": "The bite of the minimum wage varies by industry: the missing jobs estimate is -10.1% in restaurants (highly binding), -6.6% in the nontradeable sector, -1.6%/-1.7% in tradeable/manufacturing, and not binding in construction (-0.3%).",
+      "type": "table",
+      "tier": "supporting",
+      "verification": "Read Table3.tex (sectors, 1992-2016 sample) and compare cells to paper_value across the eight sector columns. Confirm restaurants have the largest bite (\u0394b\u2248-0.101), nontradeable ~-0.066, tradeable/manufacturing ~-0.016/-0.017, and construction ~-0.003. Confirm the near-zero net employment effect in nontradeable/restaurant/retail vs. negative in tradeable/manufacturing.",
+      "paper_value": {
+        "columns": [
+          "Overall",
+          "Tradeable",
+          "Nontradeable",
+          "Construction",
+          "Other",
+          "Restaurants",
+          "Retail",
+          "Manufacturing"
+        ],
+        "rows": [
+          {
+            "label": "Missing jobs below new MW (\u0394b)",
+            "values": [
+              -0.019,
+              -0.016,
+              -0.066,
+              -0.003,
+              -0.011,
+              -0.101,
+              -0.033,
+              -0.017
+            ]
+          },
+          {
+            "label": "Excess jobs above new MW (\u0394a)",
+            "values": [
+              0.02,
+              0.011,
+              0.072,
+              0.005,
+              0.011,
+              0.101,
+              0.041,
+              0.011
+            ]
+          },
+          {
+            "label": "%\u0394 affected wages",
+            "values": [
+              0.058,
+              0.058,
+              0.056,
+              0.097,
+              0.056,
+              0.049,
+              0.06,
+              0.073
+            ]
+          },
+          {
+            "label": "%\u0394 affected employment",
+            "values": [
+              0.008,
+              -0.111,
+              0.022,
+              0.051,
+              0.009,
+              -0.001,
+              0.062,
+              -0.101
+            ]
+          },
+          {
+            "label": "Emp. elasticity w.r.t. affected wage",
+            "values": [
+              0.14,
+              -1.91,
+              0.387,
+              0.53,
+              0.166,
+              -0.011,
+              1.04,
+              -1.385
+            ]
+          },
+          {
+            "label": "Jobs below new MW (b\u0304_{-1})",
+            "values": [
+              0.087,
+              0.05,
+              0.27,
+              0.036,
+              0.057,
+              0.434,
+              0.136,
+              0.05
+            ]
+          }
+        ]
+      },
+      "units": "fractions / elasticities",
+      "expected_output_file": "tables/tables/Table3.tex",
+      "provenance": {
+        "section": "III.A.2 By Industrial Sectors",
+        "page": 1438,
+        "quote": "The minimum wage is highly binding in the restaurant sector with a missing jobs estimate of 10.1%, whereas it does not appear to be binding in the construction sector."
+      },
+      "notes": "Column-1 (overall, restricted 1992-2016 sample) estimates differ slightly from the full-sample Table I."
+    },
+    {
+      "id": "C21",
+      "description": "Across events, the total employment change is essentially flat with respect to the minimum-to-median (Kaitz) index (slope 0.006, std. err. 0.048), while missing jobs decline (slope -0.133, std. err. 0.034) and excess jobs rise (slope 0.139, std. err. 0.057) with the Kaitz index, over a range of 37%-59% of the median wage.",
+      "type": "figure",
+      "tier": "supporting",
+      "verification": "Inspect Figure5_a.pdf (missing and excess jobs vs. Kaitz index) and Figure5_b.pdf (employment change vs. Kaitz index). Figure5_a should show a downward-sloping missing-jobs fit (slope ~-0.133) and an upward-sloping excess-jobs fit (slope ~0.139) across events. Figure5_b should show an essentially flat employment-change fit (slope ~0.006, s.e. ~0.048). The Kaitz index x-axis should span roughly 0.37-0.55. Based on 130 events (excluding 8 DC events).",
+      "paper_value": {
+        "employment_change_slope": 0.006,
+        "missing_jobs_slope": -0.133,
+        "excess_jobs_slope": 0.139,
+        "kaitz_range": [
+          0.37,
+          0.59
+        ]
+      },
+      "units": "slope coefficients (per unit Kaitz index) / fraction",
+      "expected_output_file": "figures/figures/Figure5_b.pdf",
+      "provenance": {
+        "section": "III.C Event-Specific Estimates",
+        "page": 1446,
+        "quote": "the coefficient on Kaitz_h is sizable and statistically significant at \u22120.133 (std. err. 0.034)... the coefficient on Kaitz_h has a very similar magnitude at 0.139 (std. err. 0.057)... the employment effect is virtually unchanged (slope = 0.006, std. err. 0.048)"
+      },
+      "notes": "Paper Figure V, Panels A (Figure5_a) and B (Figure5_b)."
+    },
+    {
+      "id": "C22",
+      "description": "The classic two-way fixed effects regression on log minimum wage (TWFE-logMW) yields a large negative aggregate employment elasticity of -0.089 (std. err. 0.025), but the negative employment changes are concentrated in the upper tail of the wage distribution (bins above $15/hour), where the minimum wage should have no causal effect.",
+      "type": "figure",
+      "tier": "supporting",
+      "verification": "Inspect Figure6.pdf. It should show, from the TWFE-logMW distributed-lags model, employment elasticity by $1 wage bin: a drop in the $6-$7 bins, a rise in the $8-$9 bins, and persistent negative effects in upper-tail bins (>$15). A dashed purple running-sum line should trend increasingly negative in the upper tail, and a final purple 'Total' bar plus inset should report an aggregate employment elasticity near -0.089 (std. err. 0.025). Confirm the negative aggregate effect is driven by upper-tail bins rather than bins near the minimum.",
+      "paper_value": {
+        "aggregate_employment_elasticity": -0.089,
+        "upper_tail_elasticity_above_15": -0.137
+      },
+      "units": "elasticity (dimensionless)",
+      "expected_output_file": "figures/figures/Figure6.pdf",
+      "provenance": {
+        "section": "IV. Employment Changes along the Wage Distribution in the Classic TWFE Regression",
+        "page": 1449,
+        "quote": "the aggregate negative employment elasticity (e.g., \u22120.137) accrues almost entirely in wage bins exceeding $15/hour."
+      },
+      "notes": "Paper Figure VI; code names it Figure6. The -0.137 figure is an alternative cumulative estimate quoted in the text."
+    },
+    {
+      "id": "C23",
+      "description": "Event-by-event estimates show the distribution of employment effects is consistent with a sharp null of zero everywhere: only 5.3% of events have statistically significant employment estimates at the 5% level, 5.4% show significant upper-tail effects, and 7.7% show significant leading (pretrend) effects.",
+      "type": "scalar",
+      "tier": "supporting",
+      "verification": "From the event-specific estimates (produced by the stacked event-by-event analysis; see Appendix Figure D2 and related dofiles), verify that roughly 5% of the 138 events have statistically significant overall employment estimates (~5.3%), significant upper-tail effects (~5.4%), and significant leads (~7.7%) at the 5% level \u2014 each near the 5% false-positive rate expected under a sharp null.",
+      "paper_value": {
+        "significant_employment": 0.053,
+        "significant_upper_tail": 0.054,
+        "significant_leads": 0.077
+      },
+      "units": "fraction of the 138 events",
+      "provenance": {
+        "section": "III.C Event-Specific Estimates",
+        "page": 1444,
+        "quote": "only 5.3% of estimates are statistically significant at the 5% level... only 5.4% of the events experience statistically significant upper-tail effects at the 5% level, while 7.7% of the events experience statistically significant leading effects."
+      },
+      "notes": "No single main-text output file; verify against event-specific estimate outputs / Appendix D materials if produced."
+    },
+    {
+      "id": "C24",
+      "description": "The overall pattern of results is qualitatively robust and consistent across the paper: missing jobs below the minimum are closely matched by excess jobs at/above it, yielding no detectable overall employment loss, while wages of affected workers rise significantly, with no employment change more than $4 above the minimum.",
+      "type": "qualitative",
+      "tier": "headline",
+      "verification": "This is the paper's overarching qualitative conclusion. Check that the produced main figures (Figure2.pdf) and tables (Table1.tex) jointly show: (i) a negative missing-jobs bar/estimate below the minimum, (ii) an approximately equal positive excess-jobs bar/estimate at/just above it, (iii) small and statistically insignificant employment changes in bins more than $4 above the minimum, and (iv) a significant positive affected-wage effect. A match means these four qualitative features all hold in the replicated outputs.",
+      "paper_value": "The number of excess jobs at and slightly above the new minimum wage closely matches the number of missing jobs below it, and there is no employment change more than $4 above the minimum, so overall low-wage employment is unchanged while affected wages rise.",
+      "provenance": {
+        "section": "V. Discussion",
+        "page": 1451,
+        "quote": "the number of excess jobs at and slightly above the minimum wage closely matches the number of missing jobs just below the minimum wage, and we find no evidence for employment changes at or more than $4 above the minimum wage."
+      },
+      "notes": "Synthesis claim tying together the headline scalar results."
+    }
+  ]
+}

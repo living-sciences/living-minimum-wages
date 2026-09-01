@@ -1,0 +1,16 @@
+{
+  "claim_id": "C4",
+  "status": "match",
+  "structured": {
+    "replicated_value": -0.018,
+    "paper_value": -0.018,
+    "uncertainty": 0.004,
+    "value_found": true
+  },
+  "rationale": "Table1.tex column (1), row 'Missing jobs below new MW ($ \\Delta $ b)' reports -0.018*** with clustered std. err. (0.004) on the line below it. This exactly matches the paper value of -0.018 (fraction of pretreatment total employment) with std. err. 0.004, and the significance stars (***) confirm the drop is significant. The replicated value is identical to the paper value, well within \u00b11\u03c3. The fix_severity.json notes the estimation pipeline was ported from Stata (reghdfe) to R (fixest::feols) as a major-but-standard correspondence with only a small unverified-numerics risk; the produced Table1 estimate nonetheless matches the paper exactly, indicating the port faithfully reproduced this estimate.",
+  "evidence_refs": [
+    "replication/codebase/tables/tables/Table1.tex",
+    "assess/fix_severity.json"
+  ],
+  "graded_by": "agent"
+}

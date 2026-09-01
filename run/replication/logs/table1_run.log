@@ -1,0 +1,58 @@
+Reading main panel (needed columns) ...
+  rows=906984 cols=107  (18.0s)
+  QCEW merged: unmatched emp = 0
+
+Scalars: mwpc=0.1013  E=0.57113  B=0.0865  EWB=0.35084  wagemult=8.7749  C=17.2862
+Estimation rows: 865215 ; events (fedincrease!=1 & grp>0 & wagebins==300): 137 
+
+=== spec 1 (TWFE) ===
+NOTE: 17,901 observations removed because of NA values (RHS: 17,901).
+  below_E(Db)=-0.018(0.004)  above_E(Da)=0.021(0.003)
+  bunching_E(%dEmp)=0.028(0.029)  WB_E(%dWage)=0.068(0.010)
+  bunchelas_E(elas wrt MW)=0.024(0.025)  labordem_E(elas wrt wage)=0.411(0.430)
+
+=== spec 4 (ST) ===
+NOTE: 17,901 observations removed because of NA values (RHS: 17,901).
+  below_E(Db)=-0.018(0.004)  above_E(Da)=0.018(0.003)
+  bunching_E(%dEmp)=0.000(0.023)  WB_E(%dWage)=0.057(0.010)
+  bunchelas_E(elas wrt MW)=0.000(0.020)  labordem_E(elas wrt wage)=0.006(0.402)
+
+=== spec 5 (DP) ===
+NOTE: 17,901 observations removed because of NA values (RHS: 17,901).
+  below_E(Db)=-0.016(0.002)  above_E(Da)=0.016(0.002)
+  bunching_E(%dEmp)=-0.002(0.021)  WB_E(%dWage)=0.049(0.010)
+  bunchelas_E(elas wrt MW)=-0.001(0.018)  labordem_E(elas wrt wage)=-0.032(0.439)
+
+=== spec 6 (ST_DP) ===
+NOTE: 17,901 observations removed because of NA values (RHS: 17,901).
+  below_E(Db)=-0.016(0.002)  above_E(Da)=0.014(0.003)
+  bunching_E(%dEmp)=-0.019(0.021)  WB_E(%dWage)=0.043(0.010)
+  bunchelas_E(elas wrt MW)=-0.016(0.018)  labordem_E(elas wrt wage)=-0.449(0.574)
+
+=== spec 10 (STQ) ===
+NOTE: 17,901 observations removed because of NA values (RHS: 17,901).
+  below_E(Db)=-0.018(0.004)  above_E(Da)=0.020(0.003)
+  bunching_E(%dEmp)=0.022(0.021)  WB_E(%dWage)=0.068(0.012)
+  bunchelas_E(elas wrt MW)=0.019(0.018)  labordem_E(elas wrt wage)=0.326(0.313)
+
+=== spec 11 (STQ_DP) ===
+NOTE: 17,901 observations removed because of NA values (RHS: 17,901).
+  below_E(Db)=-0.015(0.002)  above_E(Da)=0.015(0.003)
+  bunching_E(%dEmp)=-0.000(0.023)  WB_E(%dWage)=0.050(0.011)
+  bunchelas_E(elas wrt MW)=-0.000(0.019)  labordem_E(elas wrt wage)=-0.003(0.455)
+
+Wrote /workspace/output/replication/codebase/tables/dofiles/Table1.tex 
+
+Figure 3: running before-regression (spec 1) ...
+NOTE: 17,901 observations removed because of NA values (RHS: 17,901).
+Warning message:
+In arrows(ev$time, ev$loA, ev$time, ev$hiA, angle = 90, code = 3,  :
+  zero-length arrow is of indeterminate angle and so skipped
+Warning message:
+In arrows(ev$time, ev$loB, ev$time, ev$hiB, angle = 90, code = 3,  :
+  zero-length arrow is of indeterminate angle and so skipped
+null device 
+          1 
+Wrote /workspace/output/replication/codebase/figures/dofiles/Figure3.pdf 
+
+TOTAL time: 12.1 min

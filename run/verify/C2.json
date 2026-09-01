@@ -1,0 +1,15 @@
+{
+  "claim_id": "C2",
+  "status": "match",
+  "structured": {
+    "replicated_value": 0.068,
+    "paper_value": 0.068,
+    "uncertainty": 0.01,
+    "value_found": true
+  },
+  "rationale": "The expected output file tables/tables/Table1.tex contains the '\\%$\\Delta$ affected wages' row with column (1) value 0.068*** and a clustered standard error of (0.010) directly below it. This matches the paper value of 0.068 exactly, with a standard error of 0.010 identical to the reported 1.0%, and the *** marker confirms significance at the 1% level. The point estimate is within \u00b11\u03c3 of the paper value (indeed identical), satisfying the match criterion.",
+  "evidence_refs": [
+    "output/replication/codebase/tables/tables/Table1.tex"
+  ],
+  "graded_by": "agent"
+}

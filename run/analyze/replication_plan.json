@@ -1,0 +1,122 @@
+{
+  "environment": {
+    "language": "Stata (do-files using reghdfe); one appendix-only deconvolution step is in R and is NOT needed for any headline claim",
+    "key_dependencies": [
+      "Stata 15+ (stata-mp/stata-se, batch mode -b)",
+      "reghdfe",
+      "ftools",
+      "gtools",
+      "estout (esttab/eststo)",
+      "moremata"
+    ],
+    "setup_hints": "This is an author-provided Stata replication package (Cengiz, Dube, Lindner, Zipperer, QJE 2019). The entire headline analysis is in Stata .do files driven by dofiles/dofiles/master_QJE.do; Stata is the core dependency and is NOT currently installed in this environment (only R/Python are) -- it must be installed together with the ado packages reghdfe, ftools, gtools, estout, and moremata (via `ssc install`) before anything can run. Work on the writable copy at /workspace/output/replication/codebase/. The GPU is not used: Stata's reghdfe regressions are CPU/RAM bound (set matsize high; several derived .dta inputs are ~0.5-1.3 GB, so allow >=32 GB RAM). IMPORTANT WORKFLOW: (1) all ~7800 derived analysis .dta files already ship under data/, so the heavy raw-CPS data-build pipeline (master_QJE.do lines 70-101) can and should be skipped -- these shipped .dta are analysis *inputs*, not result artifacts, and every reported number is still recomputed by re-running the regression do-files on them; do NOT read the shipped estimates/, tables/, figures/ outputs as answers. (2) Edit the six path globals at the top of master_QJE.do (data, dofiles, tables, figures, estimates, stn_bsamples) to absolute paths in the working copy. (3) create_programs.do must be run in every Stata session before any table/figure do-file, because it defines treatmentcontrolwindows, treatmentdefinition, abovebelowbunch/full, lincomestadd, nlcomestadd, makefigure_massovertime_*, Table_create, etc. The simplest driver: for each result step, run a small wrapper .do that reproduces master_QJE.do's global block (the treatdef3 ifclause and its distifclause/missedevents/graphtablename; Wmax=Wmin=4; Tmax=16; Tmin=12; Tmaxcont/Tmincont; numberquant=3; limittreat=stateonly; disagg=\"\"; controlmethod=Absorb; contlead=\"\"), then `do create_programs.do`, then `do <target>.do`."
+  },
+  "steps": [
+    {
+      "id": 1,
+      "description": "Environment + package setup. Install Stata and the ado dependencies (reghdfe, ftools, gtools, estout, moremata). Copy the repo to /workspace/output/replication/codebase/. In master_QJE.do set the six path globals to absolute working-copy paths and comment out the data-creation block (lines ~70-101) since all derived .dta inputs already exist under data/. Confirm the key intermediate inputs are present (e.g. qcew_state_overall_counts_2016.dta, statequarter_counts_maxupperw.dta, VZmw_quarterly_lagsleads_1979_2016.dta, eventclassification.dta, qcew_state_sector_counts_2016.dta, state_panels_with3quant_ind_1992_2016.dta, median_wage_state_quarter_QJE.dta). Run create_programs.do once to verify all programs compile.",
+      "command_hint": "ssc install reghdfe, replace; ssc install ftools, replace; ssc install gtools, replace; ssc install estout, replace; ssc install moremata, replace; then in Stata batch: set matsize 11000; run master_QJE.do's global block; do \"${dofiles}create_programs.do\"",
+      "expected_outcome": "Stata runs in batch mode with reghdfe/estout available; create_programs.do completes with no error (defines programs incl. treatmentdefinition, abovebelowbunch, lincomestadd, nlcomestadd, makefigure_massovertime_before/after, Table_create). All listed data/*.dta inputs exist. No claim output yet.",
+      "verifies": []
+    },
+    {
+      "id": 2,
+      "description": "Run the core headline results do-file Table1_for_QJE.do. It runs reghdfe on affected-employment and wage-bill counts for six control specifications (TWFE, ST, DP, ST_DP, STQ, STQ_DP), then appends the simpler-method last column via Table1_last_column_for_QJE.do. Via lincomestadd/nlcomestadd it computes, per specification, the %-change in affected employment, the %-change in average wage, the own-wage (labor-demand) employment elasticity, missing jobs Delta_b (below_E), excess jobs Delta_a (above_E), the employment elasticity w.r.t. the minimum wage (bunchelas_E), the pre-treatment below-minimum share (belsh, b-bar) and the mean real MW increase (minwpc). It also emits the missing/excess-jobs event-time figure (Figure3.pdf) via makefigure_massovertime_before/after.",
+      "command_hint": "stata-mp -b do run_table1.do  # driver: set globals + do create_programs.do + do \"${dofiles}Table1_for_QJE.do\"",
+      "expected_outcome": "Writes ${tables}Table1.tex with one column per specification (TWFE, ST, STQ, DP, ST_DP, STQ_DP, simple) and rows for %-change affected employment, %-change wage, own-wage elasticity (with std. errs. in parentheses), below-share b-bar and mean MW-increase. Also writes ${estimates}Table1_<label>_estimates_full.ster for each spec (holding scalars below_E, above_E, bunchelas_E, labordem_E, WB_E) and ${figures}Figure3.pdf (two lines/CIs of below and above employment vs. event time in quarters, leads to the left of tau=0). Report the TWFE-column scalars and their std. errs.",
+      "verifies": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C9",
+        "C10",
+        "C24"
+      ]
+    },
+    {
+      "id": 3,
+      "description": "Run Figure2_for_QJE.do to produce the headline event-study of employment change by dollar wage bin relative to the new minimum wage (bin-by-bin reghdfe estimates around the minimum plus the running cumulative sum).",
+      "command_hint": "stata-mp -b do run_figure2.do  # driver: set globals + do create_programs.do + do \"${dofiles}Figure2_for_QJE.do\"",
+      "expected_outcome": "Writes ${figures}Figure2.pdf: a bar chart of the employment estimate per wage bin (x-axis in $ relative to the new MW, from about -4 to 17+) with rcap confidence intervals and an overlaid cumulative-sum line (variables bin, est, low, high, totest saved via svmat). Bins just below vs. at/above the minimum should have opposite-signed spikes; bins far above should be small.",
+      "verifies": [
+        "C8",
+        "C24"
+      ]
+    },
+    {
+      "id": 4,
+      "description": "Run Table4_for_QJE.do (which first executes wage_estimate_incum_new_sr.do, wage_estimate_base.do, wage_estimate_demog_groups.do, wage_estimate_ind_groups.do). This estimates the total affected-wage effect, the counterfactual no-spillover wage effect, and the implied spillover share, for the overall workforce, demographic/sector subgroups, and separately for incumbents (m1) and new entrants (m2).",
+      "command_hint": "stata-mp -b do run_table4.do  # driver: set globals + do create_programs.do + do \"${dofiles}Table4_for_QJE.do\"",
+      "expected_outcome": "Writes ${tables}Table4.tex with three columns (total %-change affected wage; %-change wage with no spillover; spillover share) and rows for Overall, demographic/sector subgroups, and incumbent (m1) / new-entrant (m2). Stored estimates all_2/all_3/all_spill and m1_*/m2_* carry the scalars WB_Eb/WB_Ese. Report overall spillover share and the incumbent vs. new-entrant affected-wage change and spillover share.",
+      "verifies": [
+        "C12",
+        "C13",
+        "C14"
+      ]
+    },
+    {
+      "id": 5,
+      "description": "Run Table2_for_QJE.do, the heterogeneity-by-worker-type table. It loops reghdfe over demographic/education groups (teen, HSL, HSD, female, black+hispanic) and then calls CK_groups_regressions_longfigure_QJE.do to add the Card-Krueger predicted-probability-of-exposure groups (low/middle/high, columns first_/fourth_/fifth_), computing per group the missing-jobs bite (below_E) and the own-wage employment elasticity (labordem_E).",
+      "command_hint": "stata-mp -b do run_table2.do  # driver: set globals + do create_programs.do + do \"${dofiles}Table2_for_QJE.do\"",
+      "expected_outcome": "Writes ${tables}Table_2.tex via Table_create with columns HSD, HSL, teen, female, BH and CK-probability groups first_/fourth_/fifth_, and rows reporting each group's missing-jobs Delta_b and own-wage employment elasticity (with std. errs.). Report Delta_b for HSD and HSL, the range of own-wage elasticities across groups (flagging any significant one), and Delta_b for the low/middle/high CK-probability groups.",
+      "verifies": [
+        "C15",
+        "C16",
+        "C17"
+      ]
+    },
+    {
+      "id": 6,
+      "description": "Run Table3_for_QJE.do, the sectoral heterogeneity analysis (1992-2016 industry panel). It runs reghdfe by sector (all, tradeable, nontradeable, other, construction, retail, restaurant, manufacturing) to obtain each sector's missing-jobs bite and own-wage employment elasticity.",
+      "command_hint": "stata-mp -b do run_table3.do  # driver: set globals + do create_programs.do + do \"${dofiles}Table3_for_QJE.do\"",
+      "expected_outcome": "Writes ${tables}Table3.tex with one row/column block per sector reporting the missing-jobs estimate (as % of pretreatment employment) and the own-wage employment elasticity with std. errs. Report the tradeable, manufacturing, and nontradeable own-wage elasticities and the missing-jobs estimate for restaurants, nontradeable, tradeable/manufacturing, and construction.",
+      "verifies": [
+        "C19",
+        "C20"
+      ]
+    },
+    {
+      "id": 7,
+      "description": "Run Figure4_for_QJE.do (matched/longitudinal CPS) to produce the missing/excess-jobs wage-bin figures separately for incumbents and new entrants, from which their Delta_a and Delta_b are read.",
+      "command_hint": "stata-mp -b do run_figure4.do  # driver: set globals + do create_programs.do + do \"${dofiles}Figure4_for_QJE.do\"",
+      "expected_outcome": "Writes ${figures}Figure4incumbent_<name>.pdf and ${figures}Figure4newentrant_<name>.pdf: bin-by-bin employment-change bar charts around the new minimum for each subgroup, each showing missing jobs below and excess jobs at/above the minimum with near-zero net change.",
+      "verifies": [
+        "C18"
+      ]
+    },
+    {
+      "id": 8,
+      "description": "Run Figure5_for_QJE.do to relate the total employment change, the missing jobs, and the excess jobs to the minimum-to-median (Kaitz) wage ratio across events.",
+      "command_hint": "stata-mp -b do run_figure5.do  # driver: set globals + do create_programs.do + do \"${dofiles}Figure5_for_QJE.do\"",
+      "expected_outcome": "Writes ${figures}Figure5_a.pdf and ${figures}Figure5_b.pdf: scatter/binned plots with x-axis = minimum-to-median wage ratio and y-axis = change in employment relative to pretreatment total employment, showing the fitted slope for total employment (near flat) versus missing and excess jobs.",
+      "verifies": [
+        "C21"
+      ]
+    },
+    {
+      "id": 9,
+      "description": "Run Figure6_for_QJE.do, the classic two-way fixed-effects regression on log minimum wage (TWFE-logMW) with leads/lags, decomposing the aggregate employment elasticity across the wage distribution to show where the negative effect is concentrated.",
+      "command_hint": "stata-mp -b do run_figure6.do  # driver: set globals + do create_programs.do + do \"${dofiles}Figure6_for_QJE.do\"",
+      "expected_outcome": "Writes ${figures}Figure6.pdf (and ${figures}FigureA11.pdf): the TWFE-logMW employment response, with the bin-by-bin decomposition showing the negative aggregate elasticity concentrated in high wage bins (above ~$15/hour) where the minimum wage should have no causal effect. Report the aggregate employment elasticity estimate and std. err.",
+      "verifies": [
+        "C22"
+      ]
+    }
+  ],
+  "claim_coverage": [
+    {
+      "claim_id": "C11",
+      "disposition": "out_of_scope",
+      "reason": "This is a text-only rescaling of the Table 1 overall affected-employment CI by the fixed share ratio 0.432/0.086=5.02; the repo ships no dedicated script that outputs the [-0.13,0.37] interval, and it is trivially derivable from the Table1 (step 2) output."
+    },
+    {
+      "claim_id": "C23",
+      "disposition": "out_of_scope",
+      "reason": "Event-by-event distribution of significance is an appendix-level robustness exercise (stacked_events_event_specific_regressions_* / stacked_analysis_event_by_event_FP_*), not part of master_QJE.do's main table/figure section; deprioritized in favor of headline + main-text supporting claims."
+    }
+  ]
+}

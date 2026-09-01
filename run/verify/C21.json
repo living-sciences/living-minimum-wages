@@ -1,0 +1,35 @@
+{
+  "claim_id": "C21",
+  "status": "match",
+  "structured": {
+    "file_exists": true,
+    "evidence_found": true,
+    "file_path_checked": [
+      "figures/figures/Figure5_b.pdf",
+      "figures/figures/Figure5_a.pdf"
+    ],
+    "structural_features_present": [
+      "Figure5_b: essentially flat employment-change fit labeled 'Emp. change, slope = 0.006 (0.048)'",
+      "Figure5_a: downward-sloping red missing-jobs fit labeled 'Missing jobs, slope = -0.133 (0.034)'",
+      "Figure5_a: upward-sloping blue excess-jobs fit labeled 'Excess jobs, slope = 0.139 (0.057)'",
+      "x-axis 'Minimum-to-median wage ratio' (Kaitz index) spanning ~0.39-0.54",
+      "y-axis 'Change in employment relative to pre-treatment total employment'",
+      "color coding: green (employment change), red (missing), blue/grey (excess)"
+    ],
+    "structural_features_missing": [],
+    "structural_match": true,
+    "employment_change_slope": 0.006,
+    "excess_jobs_slope": 0.139,
+    "missing_jobs_slope": -0.133,
+    "kaitz_range": [
+      0.39,
+      0.54
+    ]
+  },
+  "rationale": "Both constituent panels of Figure V were produced. Figure5_b.pdf displays an essentially flat green employment-change fit annotated 'Emp. change, slope = 0.006 (0.048)', matching the claim's employment_change_slope=0.006 (s.e. 0.048) exactly. Figure5_a.pdf shows a downward-sloping red missing-jobs fit annotated 'Missing jobs, slope = -0.133 (0.034)' and an upward-sloping blue excess-jobs fit annotated 'Excess jobs, slope = 0.139 (0.057)', matching missing_jobs_slope=-0.133 and excess_jobs_slope=0.139 exactly with the reported standard errors. Both panels share the 'Minimum-to-median wage ratio' (Kaitz) x-axis with data points spanning roughly 0.39-0.54, consistent with the claimed Kaitz range (verification instructions expected ~0.37-0.55). All annotated slopes and standard errors reproduce the paper values to the reported precision, and the visual structure (flat total, declining missing, rising excess) matches the claim.",
+  "evidence_refs": [
+    "replication/codebase/figures/figures/Figure5_a.pdf",
+    "replication/codebase/figures/figures/Figure5_b.pdf"
+  ],
+  "graded_by": "agent"
+}

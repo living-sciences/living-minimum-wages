@@ -1,0 +1,56 @@
+{
+  "instruction_summary": "Re-estimate CDLZ (2019 QJE) minimum-wage bunching event study on data extended through 2024q4 events / 2025q4 outcomes, and show how the three headline claims (no job loss, wage gains, no break up to Kaitz ~0.59) evolved into the post-2016 $15-era.",
+  "completed": true,
+  "steps": [
+    {"description": "Read replication artifacts; confirmed baseline (Da=0.021, Db=-0.018, %dEmp=0.028, %dWage=0.068, OWE=0.411) from verdicts.json and replication_log.json; replication used pre-computed .dta so panel construction had to be rebuilt", "command": "cat verify/verdicts.json replication/replication_log.json", "exit_code": 0, "outputs": []},
+    {"description": "Downloaded NBER MORG 2015-2024, Census Basic Monthly CPS 2025 (Oct missing=shutdown), VZ v1.4.0 MW zip", "command": "curl data.nber.org/morg + www2.census.gov + github VZ", "exit_code": 0, "outputs": ["data/morg/*.dta","data/census/*.csv","data/vz/*.xlsx"]},
+    {"description": "Built spliced CPI-U-RS (paper deflator) 1979-2016 + CPI-U growth 2017-2025, base 2016", "command": "python (BLS CPI-U API CUUR0000SA0)", "exit_code": 0, "outputs": ["data/cpi_monthly_1979_2025.csv","data/cpi_quarterly_1979_2025.csv"]},
+    {"description": "Built state x quarter nominal MW panel 1979-2025 (VZ<=2016, VZ1.4.0 2017-2022, FRED STTMINWG + statutory mid-year schedule 2023-2025); sanity checks passed", "command": "python (FRED API + schedule)", "exit_code": 0, "outputs": ["data/mw_panel_1979_2025.csv"]},
+    {"description": "Built CPS wage-bin count panel; VALIDATED by rebuilding 2016 from morg16.dta vs shipped panel (corr 1.00000, reldiff ~0); built 2017-2024 (MORG) + 2025 (Census)", "command": "python build_morg_bins.py; build_census_bins.py", "exit_code": 0, "outputs": ["data/morg_bincounts.csv","data/census_bincounts.csv","data/panel_bins_1979_2025.parquet"]},
+    {"description": "Built event classification; VALIDATED belowshare corr 1.0 (maxdiff 8e-9), toosmall/fedincrease 100% agree, reproduced EXACTLY 138 prominent events for 1979-2016; 98 new events 2017-2024 (236 total)", "command": "python build_events.py", "exit_code": 0, "outputs": ["data/event_sq_1979_2025.parquet","results/new_events.csv"]},
+    {"description": "Built I(tau,k) treatment/window/Omega-control dummies + calendar cohorts W1-W5 + ORIG; VALIDATED treat_p0/m1/p4 match shipped columns EXACTLY (100%), controls 98.5-99.9%", "command": "python build_treatment.py", "exit_code": 0, "outputs": ["data/panel_analysis_1979_2025.parquet"]},
+    {"description": "Pulled QCEW state total covered employment 1979-2025 via BLS open API; VALIDATED corr 1.00 vs shipped 2016 benchmark", "command": "python (BLS QCEW open API)", "exit_code": 0, "outputs": ["data/qcew_full_1979_2025.csv"]},
+    {"description": "Ran anchor (1979-2016), pooled 1979-2024, joint cohort W1-W5 regressions; ANCHOR reproduced paper (Da=0.021, Db=-0.018, E=0.571, bite=0.087)", "command": "python run_all.py", "exit_code": 0, "outputs": ["results/estimates_by_window.csv"]},
+    {"description": "C3 Kaitz split of W4+W5 events at 0.5 (events reach Kaitz 0.67, past paper's 0.59 frontier)", "command": "python kaitz_split.py", "exit_code": 0, "outputs": ["results/kaitz_split.csv"]},
+    {"description": "Produced flagship 3-panel figure and Figure II analog", "command": "python make_figures.py", "exit_code": 0, "outputs": ["results/living_estimate.png","results/living_estimate.pdf","results/figure2_new_era.png","results/figure2_data.csv"]}
+  ],
+  "key_results": {
+    "anchor_1979_2016_pct_demp": "+0.035 (se 0.032) [paper 0.028 (0.029)]",
+    "anchor_delta_a": "0.021 (paper 0.021)",
+    "anchor_delta_b": "-0.018 (paper -0.018)",
+    "pooled_1979_2024_pct_demp": "-0.011 (se 0.012) -- still insignificant",
+    "pooled_1979_2024_pct_dwage": "+0.046 (se 0.006)",
+    "W4_2016_2019_pct_demp": "-0.040 (se 0.024) -- most negative, highest bite 0.116, t=-1.7",
+    "W5_2020_2024_pct_demp": "+0.007 (se 0.035) -- benign (real MW eroded by inflation)",
+    "kaitz_ge_0.5_pct_demp": "-0.032 (se 0.043) -- negative but insignificant at bites up to 0.67",
+    "kaitz_lt_0.5_pct_demp": "+0.012 (se 0.032)",
+    "n_events": "236 prominent (138 original reproduced exactly + 98 new)",
+    "verdict": "Findings HELD but SOFTENED: wage gains and bunching mechanism robust across eras; no window shows significant job loss, but central employment estimate drifted from +2.8% to ~0/slightly negative, concentrated in high-bite W4 and Kaitz>=0.5 events."
+  },
+  "comparison_to_original": [
+    {"quantity": "% Delta affected employment (headline C1)", "original": "+0.028 (se 0.029)", "followup": "+0.035 anchor; -0.011 pooled 1979-2024; -0.040 W4 (2016-19)", "source_file": "/workspace/eval/verify/verdicts.json (C1)", "note": "reproduced at anchor; softened to ~0/negative but never significantly negative in any window"},
+    {"quantity": "Excess jobs Delta_a", "original": "0.021 (se 0.003)", "followup": "0.021 anchor; 0.017 pooled", "source_file": "/workspace/eval/verify/verdicts.json (C5)", "note": "reproduced exactly; stable across eras"},
+    {"quantity": "Missing jobs Delta_b", "original": "-0.018 (se 0.004)", "followup": "-0.018 anchor; -0.018 pooled", "source_file": "/workspace/eval/verify/verdicts.json (C4)", "note": "reproduced exactly; stable"},
+    {"quantity": "% Delta affected wage (C2)", "original": "+0.068 (se 0.010)", "followup": "+0.070 anchor; +0.046 pooled 1979-2024", "source_file": "/workspace/eval/verify/verdicts.json (C2)", "note": "held; smaller in recent windows as inflation eroded real bites"},
+    {"quantity": "Own-wage employment elasticity (C3)", "original": "+0.411 (se 0.430)", "followup": "+0.49 anchor; -0.24 pooled (imprecise)", "source_file": "/workspace/eval/verify/verdicts.json (C3)", "note": "reproduced at anchor within SE"},
+    {"quantity": "# prominent events / Kaitz frontier", "original": "138 events; no break up to Kaitz ~0.59", "followup": "138 original (reproduced exactly) + 98 new; events reach Kaitz 0.67, %dEmp -3.2% (ns) at Kaitz>=0.5", "source_file": "/workspace/eval/replication/replication_log.json", "note": "frontier approached, not decisively crossed"}
+  ],
+  "artifacts": [
+    "/workspace/eval/followup/001-living-update/results/estimates_by_window.csv",
+    "/workspace/eval/followup/001-living-update/results/kaitz_split.csv",
+    "/workspace/eval/followup/001-living-update/results/new_events.csv",
+    "/workspace/eval/followup/001-living-update/results/living_estimate.png",
+    "/workspace/eval/followup/001-living-update/results/living_estimate.pdf",
+    "/workspace/eval/followup/001-living-update/results/figure2_new_era.png",
+    "/workspace/eval/followup/001-living-update/results/figure2_data.csv",
+    "/workspace/eval/followup/001-living-update/results/findings.md"
+  ],
+  "deviations": [
+    "Applied QCEW benchmarking (spec marked it optional/skip) via BLS QCEW open API, validated corr 1.00 vs shipped 2016; it materially affects normalization and the paper uses it.",
+    "2025 built from Census Basic Monthly CPS (MORG ends 2024); modest quarterly level seam vs 2024 MORG, absorbed by FEs and reported. Oct 2025 CPS/CPI missing (govt shutdown) -> 2025q4 from Nov+Dec only.",
+    "Event definition uses the paper's ground-truth do-file rule (real Delta MW > $0.25), which reproduces the 138 events exactly, rather than the spec's looser 'nominal >= $0.25' candidate wording.",
+    "Oregon MW uses the standard-rate statutory schedule because FRED STTMINWGOR reports the higher Portland-metro rate; NV two-tier seam smoothed via nominal non-decrease in 2017q1+.",
+    "Anchor %dEmp = 0.035 vs paper 0.028 (within 1 SE); Da, Db, E, bite, %dMW reproduce to 3 decimals. Traces to ~1.5% small-event-control discrepancy near the 2016 boundary.",
+    "Demographic/sector subgroups, placebo tail (k=+5..+17), and matched-CPS incumbent/entrant split were out of scope (three headline claims are overall estimates)."
+  ]
+}

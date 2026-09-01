@@ -1,0 +1,16 @@
+{
+  "claim_id": "C5",
+  "status": "match",
+  "structured": {
+    "replicated_value": 0.021,
+    "paper_value": 0.021,
+    "uncertainty": 0.003,
+    "value_found": true
+  },
+  "rationale": "Table1.tex line 5 ('Excess jobs above new MW ($ \\Delta $ a)'), column (1), reads 0.021*** with the clustered standard error 0.003 on the following line (line 6, '(0.003)'). This exactly matches the paper's reported \u0394a = 0.021 (std. err. 0.003) of total pretreatment employment. The replicated point estimate equals the paper value (0% relative error) and is trivially within \u00b11\u03c3; the standard error also matches to the reported precision. The fix_severity.json notes only that the estimation pipeline was ported Stata->R/fixest (major, environment-driven) with no critical fixes affecting this code path, so the produced value faithfully reflects the paper's method.",
+  "evidence_refs": [
+    "replication/codebase/tables/tables/Table1.tex",
+    "assess/fix_severity.json"
+  ],
+  "graded_by": "agent"
+}

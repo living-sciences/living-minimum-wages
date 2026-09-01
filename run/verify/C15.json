@@ -1,0 +1,22 @@
+{
+  "claim_id": "C15",
+  "status": "match",
+  "structured": {
+    "replicated_value": {
+      "high_school_or_less": -0.032,
+      "less_than_high_school": -0.065
+    },
+    "paper_value": {
+      "high_school_or_less": -0.032,
+      "less_than_high_school": -0.065
+    },
+    "uncertainty": null,
+    "value_found": true
+  },
+  "rationale": "Table2.tex row 3 ('Missing jobs below new MW ($\\Delta$ b)') reports the demographic-subsample \u0394b estimates. Column (1) = -0.065*** (SE 0.010) corresponds to 'Less than high school' and column (2) = -0.032*** (SE 0.007) corresponds to 'High school or less'. These exactly match the claim's paper_value of less_than_high_school = -0.065 and high_school_or_less = -0.032 (0% relative error), well within the 5% match band. The relevant estimation was a documented Stata->R/fixest port (fix_severity.json, 'major' but environment-driven, not a methodological flaw), which did not affect the produced Table2 values reported here.",
+  "evidence_refs": [
+    "replication/codebase/tables/tables/Table2.tex",
+    "assess/fix_severity.json"
+  ],
+  "graded_by": "agent"
+}
