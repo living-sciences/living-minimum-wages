@@ -34,3 +34,17 @@ Replication scores measure whether claims reproduce under our agents' effort,
 not whether authors did anything wrong. Read the referee report's Notes and
 the per-claim verdicts in `run/verify/verdicts.json` before quoting any
 number.
+
+## Data sources for the extension studies
+
+The extension studies pulled fresh public data on August 23, 2026. In full:
+
+- Current Population Survey, Merged Outgoing Rotation Group extracts, 2015 to 2024, distributed by the National Bureau of Economic Research (data.nber.org/morg).
+- U.S. Census Bureau, Current Population Survey Basic Monthly public-use microdata, January to December 2025 (October 2025 is unavailable because of the federal government shutdown).
+- Vaghul and Zipperer, "Historical State and Sub-State Minimum Wages," release v1.4.0 (November 2022), quarterly state series, from github.com/benzipperer/historicalminwage.
+- U.S. Department of Labor, state minimum wage rate series (STTMINWG, by state), retrieved from FRED, Federal Reserve Bank of St. Louis, supplemented with legislated mid-year 2023 to 2025 increases for Florida, Oregon, Nevada, DC and Connecticut coded from state statutory schedules.
+- U.S. Bureau of Labor Statistics, Quarterly Census of Employment and Wages, state total covered employment, open-data API, 2016 to 2025.
+- U.S. Bureau of Labor Statistics, Consumer Price Index for All Urban Consumers (CPI-U, series CUUR0000SA0), monthly 2016 to 2025, used to extend the paper's CPI-U-RS deflator past 2016.
+- The paper's own replication package (the 1979 to 2016 wage-bin panel, minimum-wage panel, CPI-U-RS deflator, QCEW benchmark and event classification files), reused as the pre-2017 backbone and for validation.
+
+The theory update fetched no new data; it works entirely from the living update's panel.
