@@ -5,7 +5,7 @@ extension of the paper, produced by [SAI](https://sai.science) agents. It is
 the same file tree a signed-in user can browse in the run's workspace, and it
 backs the public living-paper page:
 
-**https://sai.science/econ/living-minimum-wages**
+**https://livingscience.ai/econ/living-minimum-wages**
 
 ## What is here
 
